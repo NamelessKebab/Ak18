@@ -32,3 +32,4 @@ dist/
 nbdist/
 nbactions.xml
 *.properties
+nbproject/build-impl.xml~
