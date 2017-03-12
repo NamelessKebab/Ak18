@@ -8,6 +8,7 @@ package erstesgame;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
@@ -29,22 +30,22 @@ public class Var  {
     static int backgroundY2 = 600; // bild kordianten
     static Label lbl1;
     static JFrame jf1;
-    static BufferedImage bProject;  // Die bewegenden Hintergründe
-    // static BufferedImage bProject2 //2tes bild was abläuft
+    static BufferedImage bProject;  // Die bewegenden HintergrÃ¼nde
+    // static BufferedImage bProject2 //2tes bild was ablÃ¤uft
     public Var(){
    //background
        
         try {
-            
-            bProject = ImageIO.read(new File("rsc/bProject.png"));
+            System.out.println(getClass().getResource("/rsc/bProject.png").toString());
+            bProject = ImageIO.read(getClass().getResource("/rsc/bProject.png").toURI().toURL()); // Bild wird aus der .jar Datei / dem Quellverzeichnis geladen
           //ib1 = ImageIO.read(new File("rcs/b1.png"));
                  
-} catch (IOException e){
-    e.printStackTrace();
-    System.out.println("Bilder nicht geladen werden");
+        } catch (IOException | URISyntaxException e){
+            e.printStackTrace();
+            System.out.println("Bilder nicht geladen werden");
 
 
-}
+        }
     
 }
 }

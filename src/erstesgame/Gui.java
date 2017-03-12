@@ -16,7 +16,7 @@ public class Gui {
   Var.jf1 = new JFrame();
   Var.jf1.setSize(Var.screenwidth, Var.screenheight); // GUI breite und dicke
   Var.jf1.setLocationRelativeTo(null);//Objekt wird in die Mitte geschoben
-  Var.jf1.setVisible(true);
+  Var.jf1.setVisible(false);
   Var.jf1.setLayout(null);
   Var.jf1.setTitle("Jump and Run");
   Var.jf1.setResizable(false);
