@@ -11,51 +11,56 @@ import java.awt.event.KeyListener;
 
 /**
  *
- * @author Florian Rost
+ * @author Florian Rost & Julian Blazek
  */
 public class KeyHandler implements KeyListener {
 
 @Override 
 public void keyTyped(KeyEvent e){ // gedrückt und wieder losgelassen wird
-   
+
    }
 
 @Override    
 public void keyPressed(KeyEvent e){ // gehalten wird
 
     if (e.getKeyCode()==KeyEvent.VK_UP){
-Var.moveup = true;
-}
+        Var.moveup = true;
+        KeyActions.moveup();
+    }
     if (e.getKeyCode()==KeyEvent.VK_DOWN){
-Var.movedown = true;
-}
+        Var.movedown = true;
+        KeyActions.movedown();
+    }
     if (e.getKeyCode()==KeyEvent.VK_LEFT){
-Var.moveleft = true;
-}
+        Var.moveleft = true;
+        KeyActions.moveleft();
+    }
     if (e.getKeyCode()==KeyEvent.VK_RIGHT){
-Var.moveright = true;
-}
+        Var.moveright = true;
+        KeyActions.moveright();
+    }
 
 }    
 
 
 @Override 
-public void keyReleased(KeyEvent e){ // hochgelassen wird
-if (e.getKeyCode()==KeyEvent.VK_UP){
-Var.moveup = false;
-}
+public void keyReleased(KeyEvent e){ // losgelassen wird
+    if (e.getKeyCode()==KeyEvent.VK_UP){
+        Var.moveup = false;
+        
+    }
 
-if (e.getKeyCode()==KeyEvent.VK_DOWN){
-Var.moveup = false;
-}
+    if (e.getKeyCode()==KeyEvent.VK_DOWN){
+        Var.moveup = false;
+    }
 
-if (e.getKeyCode()==KeyEvent.VK_LEFT){
-Var.moveup = false;
-}
+    if (e.getKeyCode()==KeyEvent.VK_LEFT){
+        Var.moveup = false;
+    }
 
-if (e.getKeyCode()==KeyEvent.VK_RIGHT){
-Var.moveup = false;
-}
+    if (e.getKeyCode()==KeyEvent.VK_RIGHT){
+        Var.moveup = false;
+    }
 
 
 }
