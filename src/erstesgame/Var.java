@@ -9,14 +9,15 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.JFrame;
 
 /**
  *
  * @author Florian Rost
  */
-public class Var {
-   static JFrame jf1;
+public class Var  {
+  
+   
+   
     static int screenwidth = 800;
     static int  screenheight = 600;
     static boolean moveup = false;
