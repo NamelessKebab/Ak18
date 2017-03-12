@@ -21,7 +21,8 @@ public class Erstesgame {
         new Var();         // die main
         new KeyHandler();  // aufgerufen
         new Label();
-        System.out.println("Döner");
+        new NewGUI().setVisible(true);
+        System.out.println("DÃ¶ner");
 
 //
     }

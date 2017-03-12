@@ -43,12 +43,22 @@ public class NewGUI extends javax.swing.JFrame {
         });
 
         jbtnEinstellungen.setText("Einstellungen");
+        jbtnEinstellungen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnEinstellungenActionPerformed(evt);
+            }
+        });
 
         jbtnInformationen.setText("Informationen");
 
         jbtnCredits.setText("Credits");
 
         btnBeende.setText("Beenden");
+        btnBeende.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBeendeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,8 +95,18 @@ public class NewGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnSpielstartenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSpielstartenActionPerformed
-        // TODO add your handling code here:
+        Var.jf1.setVisible(true);
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jbtnSpielstartenActionPerformed
+
+    private void jbtnEinstellungenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnEinstellungenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbtnEinstellungenActionPerformed
+
+    private void btnBeendeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBeendeActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnBeendeActionPerformed
 
     /**
      * @param args the command line arguments
