@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author Florian Rost
+ * @author Florian Rost & Julian Blazek
  */
 public class Var  {
   
