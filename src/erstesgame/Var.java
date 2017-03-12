@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.JFrame;
 
 /**
  *
@@ -27,6 +28,7 @@ public class Var  {
     static int backgroundY1 = 0; // bild koordrinate
     static int backgroundY2 = 600; // bild kordianten
     static Label lbl1;
+    static JFrame jf1;
     static BufferedImage bProject;  // Die bewegenden Hintergründe
     // static BufferedImage bProject2 //2tes bild was abläuft
     public Var(){

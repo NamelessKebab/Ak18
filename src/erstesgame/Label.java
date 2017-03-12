@@ -17,6 +17,7 @@ import javax.swing.JLabel; // import GUI
 public class Label extends JLabel { //JLabel wird extendet
    private static final long serialVersionUID = 1L;
 
+   @Override
  protected void  paintComponent(Graphics g){ //hier drinn können wir zeichnen
  super.paintComponent(g);
 
