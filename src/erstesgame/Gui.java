@@ -11,7 +11,7 @@ import javax.swing.JFrame;
  *
  * @author Florian Rost
  */
-public class Gui {
+public class Gui { //Spielfenster
   public Gui(){
   Var.jf1 = new JFrame();
   Var.jf1.setSize(Var.screenwidth, Var.screenheight); // GUI breite und dicke
