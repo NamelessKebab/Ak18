@@ -16,12 +16,12 @@ public class Erstesgame {
      */
     public static void main(String[] args) {
         
-        
         new Gui();         //Klassen werden durch 
         new Var();         // die main
-        new KeyHandler();  // aufgerufen
+        new TimerClass();  // aufgerufen
         new Label();
         new NewGUI().setVisible(true);
+        Var.play = new Player(0,0,Var.sprite);
         System.out.println("DÃ¶ner");
 
 //

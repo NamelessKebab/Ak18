@@ -14,7 +14,6 @@ import java.awt.event.KeyListener;
  * @author Florian Rost & Julian Blazek
  */
 public class KeyHandler implements KeyListener {
-
 @Override 
 public void keyTyped(KeyEvent e){ // gedrückt und wieder losgelassen wird
 
@@ -26,6 +25,7 @@ public void keyPressed(KeyEvent e){ // gehalten wird
     if (e.getKeyCode()==KeyEvent.VK_UP){
         Var.moveup = true;
         KeyActions.moveup();
+        System.out.println("teeeetst");
     }
     if (e.getKeyCode()==KeyEvent.VK_DOWN){
         Var.movedown = true;
@@ -47,7 +47,7 @@ public void keyPressed(KeyEvent e){ // gehalten wird
 public void keyReleased(KeyEvent e){ // losgelassen wird
     if (e.getKeyCode()==KeyEvent.VK_UP){
         Var.moveup = false;
-        
+        System.out.println("teeeetsaddt");
     }
 
     if (e.getKeyCode()==KeyEvent.VK_DOWN){
