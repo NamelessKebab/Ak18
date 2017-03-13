@@ -10,7 +10,7 @@ package erstesgame;
  * @author Florian Rost
  */
 public class Erstesgame {
-
+    final public static String version = "0.0.1";
     /**
      * @param args the command line arguments
      */
@@ -25,6 +25,10 @@ public class Erstesgame {
         System.out.println("DÃ¶ner");
 
 //
+    }
+    
+    public static void print(String pOut){
+        System.out.println(pOut);
     }
     
 }
