@@ -25,6 +25,7 @@ public class Gui { //Spielfenster
   Var.lbl1 = new Label ();
   Var.lbl1.setBounds(0,0,Var.screenwidth, Var.screenheight);
    Var.jf1.add(Var.lbl1); 
+   Var.jf1.addKeyListener(new KeyHandler());
    Var.lbl1.setVisible(true);
          }  
 

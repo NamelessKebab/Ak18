@@ -30,6 +30,8 @@ public class Var  {
     static Label lbl1;
     static JFrame jf1;
     static BufferedImage imgBackground1;  //Testhintergrund
+    static BufferedImage sprite;
+    static erstesgame.Player play;
     public Var(){
    //background
        
@@ -38,7 +40,7 @@ public class Var  {
    try {
             
            imgBackground1 = ImageIO.read(getClass().getResource("/rsc/bProject.png").toURI().toURL()); // Bild wird aus der .jar Datei / dem Quellverzeichnis geladen
-          
+          sprite = ImageIO.read(getClass().getResource("/rsc/b1.png").toURI().toURL());
                  
         } catch (IOException | URISyntaxException e){
             

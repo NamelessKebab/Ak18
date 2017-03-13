@@ -12,19 +12,19 @@ package erstesgame;
 public class KeyActions {
 
     static void moveup() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Var.play.setY(Var.play.getY()-3);
     }
 
     static void movedown() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Var.play.setY(Var.play.getY()+3);
     }
 
     static void moveleft() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Var.play.setX(Var.play.getX()-3);
     }
 
     static void moveright() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Var.play.setX(Var.play.getX()+3);
     }
     
 }
