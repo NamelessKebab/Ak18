@@ -12,21 +12,22 @@ import javax.swing.JFrame;
  * @author Florian Rost
  */
 public class Gui { //Spielfenster
-  public Gui(){
-  Var.jf1 = new JFrame();
-  Var.jf1.setSize(Var.screenwidth, Var.screenheight); // GUI breite und dicke
-  Var.jf1.setLocationRelativeTo(null);//Objekt wird in die Mitte geschoben
-  Var.jf1.setVisible(false);
-  Var.jf1.setLayout(null);
-  Var.jf1.setTitle("Jump and Run");
-  Var.jf1.setResizable(false);
-  Var.jf1.requestFocus();
+    public Gui(){
+    Var.jf1 = new JFrame();
+    Var.jf1.setSize(Var.screenwidth, Var.screenheight); // GUI breite und dicke
+    Var.jf1.setLocationRelativeTo(null);//Objekt wird in die Mitte geschoben
+    Var.jf1.setVisible(false);
+    Var.jf1.setLayout(null);
+    Var.jf1.setTitle("Jump and Run");
+    Var.jf1.setResizable(false);
+    Var.jf1.requestFocus();
+
+    Var.lbl1 = new Label ();
+    Var.lbl1.setBounds(0,0,Var.screenwidth, Var.screenheight);
    
-  Var.lbl1 = new Label ();
-  Var.lbl1.setBounds(0,0,Var.screenwidth, Var.screenheight);
-   Var.jf1.add(Var.lbl1); 
-   Var.jf1.addKeyListener(new KeyHandler());
-   Var.lbl1.setVisible(true);
+    Var.jf1.add(Var.lbl1); 
+    Var.jf1.addKeyListener(new KeyHandler());
+    Var.lbl1.setVisible(true);
          }  
 
   

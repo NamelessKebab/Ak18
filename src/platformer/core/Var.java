@@ -8,8 +8,8 @@ package platformer.core;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import platformer.util.Image;
 
 /**
  *
@@ -31,16 +31,16 @@ public class Var  {
     static JFrame jf1;
     static BufferedImage imgBackground1;  //Testhintergrund
     static BufferedImage sprite;
-    static platformer.core.Player play;
+    static platformer.core.Player play = null;
     public Var(){
    //background
        
         
    
    try {
-            
-           imgBackground1 = ImageIO.read(getClass().getResource("/rsc/bProject.png").toURI().toURL()); // Bild wird aus der .jar Datei / dem Quellverzeichnis geladen
-          sprite = ImageIO.read(getClass().getResource("/rsc/b1.png").toURI().toURL());
+        imgBackground1 = Image.getImage("/rsc/bProject.png");
+        //imgBackground1 = ImageIO.read(getClass().getResource("/rsc/bProject.png").toURI().toURL()); // Bild wird aus der .jar Datei / dem Quellverzeichnis geladen
+        //sprite = ImageIO.read(getClass().getResource("/rsc/b1.png").toURI().toURL());
                  
         } catch (IOException | URISyntaxException e){
             
