@@ -12,7 +12,7 @@ package platformer.core;
 public class Erstesgame {
     final public static String version = "0.0.1";
     /**
-     * @param args the command line arguments
+     * @param args the command line arguments (not used)
      */
     public static void main(String[] args) {
         

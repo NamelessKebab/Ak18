@@ -8,8 +8,12 @@ package platformer.core;
 import java.awt.image.BufferedImage;
 
 /**
- *
+ * Diese Klasse dient dazu Variablen
+ * und Eigenschaften des Spielers
+ * zu speichern.
+ * 
  * @author Julian Blazek
+ * @version 1.0 13.03.2017
  */
 public class Player {
     private int x;
@@ -19,7 +23,16 @@ public class Player {
     private int altX;
     private int altY;
     private BufferedImage sprite;
-
+    
+    /**
+     * Der Konstruktor dieser Klasse
+     * welcher sofort einige Werte
+     * speichert.
+     * 
+     * @param x Anfänglicher x-Wert des Objekts
+     * @param y Anfänglicher y-Wert des Objekts
+     * @param sprite Sprite des Objekts
+     */
     public Player(int x, int y, BufferedImage sprite) {
         this.x = x;
         this.y = y;
@@ -49,7 +62,9 @@ public class Player {
     public int getAltY() {
         return altY;
     }
-
+    /**
+     * @return Gibt die gespeicherte sprite des Objekts zurück.
+     */
     public BufferedImage getSprite() {
         return sprite;
     }
