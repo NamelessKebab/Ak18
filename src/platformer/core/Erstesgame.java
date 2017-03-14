@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package erstesgame;
+package platformer.core;
 
 /**
  *
@@ -12,7 +12,7 @@ package erstesgame;
 public class Erstesgame {
     final public static String version = "0.0.1";
     /**
-     * @param args the command line arguments
+     * @param args the command line arguments (not used)
      */
     public static void main(String[] args) {
         

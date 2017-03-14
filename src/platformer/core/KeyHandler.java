@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package erstesgame;
+package platformer.core;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -47,7 +47,6 @@ public void keyPressed(KeyEvent e){ // gehalten wird
 public void keyReleased(KeyEvent e){ // losgelassen wird
     if (e.getKeyCode()==KeyEvent.VK_UP){
         Var.moveup = false;
-        System.out.println("teeeetsaddt");
     }
 
     if (e.getKeyCode()==KeyEvent.VK_DOWN){

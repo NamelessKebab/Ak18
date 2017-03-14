@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package util;
+package platformer.util;
 
-import erstesgame.Erstesgame;
+import platformer.core.Erstesgame;
 import java.io.File;
 import java.io.IOException;
 import org.ini4j.*;

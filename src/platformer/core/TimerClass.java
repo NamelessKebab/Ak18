@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package erstesgame;
+package platformer.core;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,7 +27,7 @@ class TimerActionPerformed implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e){
         //erstesgame.Player.update();
-        erstesgame.Var.lbl1.repaint();
+        platformer.core.Var.lbl1.repaint();
     }
 
 }
