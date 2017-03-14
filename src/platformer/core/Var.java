@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package erstesgame;
+package platformer.core;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -31,7 +31,7 @@ public class Var  {
     static JFrame jf1;
     static BufferedImage imgBackground1;  //Testhintergrund
     static BufferedImage sprite;
-    static erstesgame.Player play;
+    static platformer.core.Player play;
     public Var(){
    //background
        

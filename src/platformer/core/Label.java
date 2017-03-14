@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package erstesgame;
+package platformer.core;
 
 import java.awt.Graphics; // Graphicen werden importiert
 import java.awt.Graphics2D;

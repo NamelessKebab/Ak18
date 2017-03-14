@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package erstesgame;
+package platformer.core;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
