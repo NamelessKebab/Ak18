@@ -23,6 +23,7 @@ public class Erstesgame {
         new NewGUI().setVisible(true);
         Var.play = new Player(0,0,Var.sprite);
         System.out.println("DÃ¶ner");
+        
 
 //
     }

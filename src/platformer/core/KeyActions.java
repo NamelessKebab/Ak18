@@ -26,5 +26,9 @@ public class KeyActions {
     static void moveright() {
         Var.play.setX(Var.play.getX()+3);
     }
+    static void pause(){
+    new NewGUIPause().setVisible(true);
+    
+    }
     
 }

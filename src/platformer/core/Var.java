@@ -16,8 +16,8 @@ import platformer.util.Image;
  * @author Florian Rost & Julian Blazek
  */
 public class Var  {
-  
-   
+  // sollen wir objekte für die GUIs machen oder sie einfach immer neu ablaufen lassen?
+  // sollten wir ein Package für die ganzen GUI dateien machen?
    
     static int screenwidth = 800;
     static int  screenheight = 600;
@@ -25,6 +25,7 @@ public class Var  {
     static boolean movedown = false;
     static boolean moveleft = false;
     static boolean moveright = false;
+    static boolean pause = false;
     static int backgroundY1 = 0; // bild koordrinate
     static int backgroundY2 = 600; // bild kordianten
     static Label lbl1;

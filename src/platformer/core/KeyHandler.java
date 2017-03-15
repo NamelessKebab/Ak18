@@ -39,7 +39,13 @@ public void keyPressed(KeyEvent e){ // gehalten wird
         Var.moveright = true;
         KeyActions.moveright();
     }
+      if (e.getKeyCode()==KeyEvent.VK_P){
+        Var.pause = true;
+        KeyActions.pause();
+      }
 
+
+   
 }    
 
 
@@ -60,6 +66,12 @@ public void keyReleased(KeyEvent e){ // losgelassen wird
     if (e.getKeyCode()==KeyEvent.VK_RIGHT){
         Var.moveup = false;
     }
+    
+    if (e.getKeyCode()==KeyEvent.VK_P){
+        Var.moveup = false;
+        
+    }
+    
 
 
 }
