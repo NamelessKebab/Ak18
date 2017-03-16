@@ -101,7 +101,8 @@ public class NewGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnSpielstartenActionPerformed
 
     private void jbtnEinstellungenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnEinstellungenActionPerformed
-        // TODO add your handling code here:
+        new NewGUIEinstellungen().setVisible(true);
+    
     }//GEN-LAST:event_jbtnEinstellungenActionPerformed
 
     private void btnBeendeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBeendeActionPerformed
