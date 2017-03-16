@@ -33,9 +33,12 @@ public class Var  {
     static BufferedImage imgBackground1;  //Testhintergrund
     static BufferedImage sprite;
     static platformer.core.Player play = null;
+    static boolean gameStarted = false;
+    static long oldTime;
+    static long newTime = System.nanoTime();
     public Var(){
    //background
-       
+ 
         
    
    try {
