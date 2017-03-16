@@ -28,10 +28,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jbtnWeiterspielen" min="-2" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="jbtnMenü" alignment="0" max="32767" attributes="0"/>
                       <Component id="jbtnNeustarten" alignment="0" max="32767" attributes="0"/>
                       <Component id="jbtnEinstellungenMenü" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jbtnMenü" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
           </Group>

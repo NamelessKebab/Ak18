@@ -73,9 +73,9 @@ public class NewGUIPause extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbtnWeiterspielen)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jbtnMenü, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbtnNeustarten, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbtnEinstellungenMenü, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jbtnMenü, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jbtnEinstellungenMenü, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
@@ -115,7 +115,7 @@ public class NewGUIPause extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnWeiterspielenActionPerformed
 
     private void jbtnMenüActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnMenüActionPerformed
-      new NewGUI().setVisible(true);
+      new NewGUISicherheitsabfrage().setVisible(true);
       this.setVisible(false);
     }//GEN-LAST:event_jbtnMenüActionPerformed
 

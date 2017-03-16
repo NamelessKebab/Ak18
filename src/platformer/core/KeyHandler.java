@@ -69,7 +69,7 @@ public void keyReleased(KeyEvent e){ // losgelassen wird
     }
     
     if (e.getKeyCode()==KeyEvent.VK_P){
-        Var.moveup = false;
+        Var.pause = false;
         
     }
     
