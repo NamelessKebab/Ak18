@@ -96,6 +96,7 @@ public class NewGUI extends javax.swing.JFrame {
     private void jbtnSpielstartenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSpielstartenActionPerformed
         Var.jf1.setVisible(true);
         this.setVisible(false);
+        Var.gameStarted = true;
         this.dispose();
     }//GEN-LAST:event_jbtnSpielstartenActionPerformed
 

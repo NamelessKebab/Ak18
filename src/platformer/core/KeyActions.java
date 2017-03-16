@@ -5,6 +5,8 @@
  */
 package platformer.core;
 
+import platformer.physics.PlayerPhysics;
+
 /**
  *
  * @author Julian Blazek
@@ -12,7 +14,7 @@ package platformer.core;
 public class KeyActions {
 
     static void moveup() {
-        Var.play.setY(Var.play.getY()-3);
+        PlayerPhysics.springe(Var.play);
     }
 
     static void movedown() {

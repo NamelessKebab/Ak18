@@ -21,7 +21,8 @@ public class Gui { //Spielfenster
     Var.jf1.setTitle("Jump and Run");
     Var.jf1.setResizable(false);
     Var.jf1.requestFocus();
-
+    Var.jf1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+    
     Var.lbl1 = new Label ();
     Var.lbl1.setBounds(0,0,Var.screenwidth, Var.screenheight);
    

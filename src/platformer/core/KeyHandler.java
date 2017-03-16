@@ -24,7 +24,7 @@ public void keyPressed(KeyEvent e){ // gehalten wird
 
     if (e.getKeyCode()==KeyEvent.VK_UP){
         Var.moveup = true;
-        KeyActions.moveup();
+        
         System.out.println("teeeetst");
     }
     if (e.getKeyCode()==KeyEvent.VK_DOWN){
@@ -47,6 +47,7 @@ public void keyPressed(KeyEvent e){ // gehalten wird
 public void keyReleased(KeyEvent e){ // losgelassen wird
     if (e.getKeyCode()==KeyEvent.VK_UP){
         Var.moveup = false;
+        KeyActions.moveup();
     }
 
     if (e.getKeyCode()==KeyEvent.VK_DOWN){

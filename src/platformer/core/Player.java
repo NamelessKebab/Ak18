@@ -76,6 +76,18 @@ public class Player {
     public void setY(int y) {
         this.y = y;
     }
+
+    public void setySpeed(double ySpeed) {
+        this.ySpeed = ySpeed;
+    }
+
+    public void setAltX(int altX) {
+        this.altX = altX;
+    }
+
+    public void setAltY(int altY) {
+        this.altY = altY;
+    }
     
     
     
