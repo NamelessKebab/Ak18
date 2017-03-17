@@ -60,7 +60,7 @@ public class NewGUIEinstellungen extends javax.swing.JFrame {
 
     private void btnZurückActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZurückActionPerformed
         this.setVisible(false);
-        new NewGUIPause().setVisible(true);
+        
         
     }//GEN-LAST:event_btnZurückActionPerformed
 
