@@ -17,26 +17,29 @@ import javax.swing.Timer;
  * @author Julian Blazek
  */
 public class TimerClass {
+
     Timer timer;
+
     public TimerClass() {
-        timer = new Timer(17,new TimerActionPerformed());
+        timer = new Timer(17, new TimerActionPerformed());
         timer.start();
     }
-    
+
 }
 
-class TimerActionPerformed implements ActionListener{
+class TimerActionPerformed implements ActionListener {
 
     @Override
-    public void actionPerformed(ActionEvent e){
+    public void actionPerformed(ActionEvent e) {
         Var.oldTime = Var.newTime;
         Var.newTime = System.nanoTime();
-        if(Var.gameStarted){
+        if (Var.gameStarted) {
             platformer.physics.PlayerPhysics.update(Var.play, 98.1, diffTime());
-        }  
+        }
         platformer.core.Var.lbl1.repaint();
     }
-    private double diffTime(){
-        return  (Var.newTime - Var.oldTime)/(1*(Math.pow(10, 9)));
+
+    private double diffTime() {
+        return (Var.newTime - Var.oldTime) / (1 * (Math.pow(10, 9)));
     }
 }
