@@ -17,29 +17,32 @@ import org.ini4j.*;
  * @author Julian
  */
 public class InitConfig {
+
     private static Wini iniconf;
-    public static void initIni(File pIniloc){
+
+    public static void initIni(File pIniloc) {
         //Trying to create the ini File
         Erstesgame.print("Trying to create config..");
-        try{
-            if(pIniloc.createNewFile()){
+        try {
+            if (pIniloc.createNewFile()) {
                 Erstesgame.print("Successfully created config file..");
                 writedefault(pIniloc);
             }
-        }
-        catch(IOException e){
+        } catch (IOException e) {
             Erstesgame.print("Error creating config..");
         }
-        
+
     }
-    public static void recreate(File pIniloc){
+
+    public static void recreate(File pIniloc) {
         //deleting the ini and initializing it again
         pIniloc.delete();
         initIni(pIniloc);
     }
-    public static void writedefault(File pIniloc){
+
+    public static void writedefault(File pIniloc) {
         //creating a Wini object
-         try {
+        try {
             iniconf = new Wini(pIniloc);
         } catch (IOException ex) {
             Logger.getLogger(InitConfig.class.getName()).log(Level.SEVERE, null, ex);

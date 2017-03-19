@@ -10,7 +10,6 @@ package platformer.core;
  * @author Florian Rost
  */
 public class NewGUI extends javax.swing.JFrame {
-  
 
     /**
      * Creates new form NewGUI
@@ -18,7 +17,7 @@ public class NewGUI extends javax.swing.JFrame {
     public NewGUI() {
         initComponents();
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -103,7 +102,7 @@ public class NewGUI extends javax.swing.JFrame {
 
     private void jbtnEinstellungenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnEinstellungenActionPerformed
         new NewGUIEinstellungen().setVisible(true);
-    
+
     }//GEN-LAST:event_jbtnEinstellungenActionPerformed
 
     private void btnBeendeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBeendeActionPerformed
@@ -144,7 +143,6 @@ public class NewGUI extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBeende;
     private javax.swing.JButton jbtnCredits;

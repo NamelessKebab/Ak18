@@ -15,12 +15,12 @@ import platformer.util.Image;
  *
  * @author Florian Rost & Julian Blazek
  */
-public class Var  {
-  // sollen wir objekte für die GUIs machen oder sie einfach immer neu ablaufen lassen?
-  // sollten wir ein Package für die ganzen GUI dateien machen?
-   
+public class Var {
+    // sollen wir objekte für die GUIs machen oder sie einfach immer neu ablaufen lassen?
+    // sollten wir ein Package für die ganzen GUI dateien machen?
+
     static int screenwidth = 800;
-    static int  screenheight = 600;
+    static int screenheight = 600;
     static boolean moveup = false;
     static boolean movedown = false;
     static boolean moveleft = false;
@@ -36,22 +36,20 @@ public class Var  {
     static boolean gameStarted = false;
     static long oldTime;
     static long newTime = System.nanoTime();
-    public Var(){
-   //background
- 
-        
-   
-   try {
-        imgBackground1 = Image.getImage("/rsc/bProject.png");
-        //imgBackground1 = ImageIO.read(getClass().getResource("/rsc/bProject.png").toURI().toURL()); // Bild wird aus der .jar Datei / dem Quellverzeichnis geladen
-        //sprite = ImageIO.read(getClass().getResource("/rsc/b1.png").toURI().toURL());
-                 
-        } catch (IOException | URISyntaxException e){
-            
+
+    public Var() {
+        //background
+
+        try {
+            imgBackground1 = Image.getImage("/rsc/bProject.png");
+            //imgBackground1 = ImageIO.read(getClass().getResource("/rsc/bProject.png").toURI().toURL()); // Bild wird aus der .jar Datei / dem Quellverzeichnis geladen
+            //sprite = ImageIO.read(getClass().getResource("/rsc/b1.png").toURI().toURL());
+
+        } catch (IOException | URISyntaxException e) {
+
             System.out.println("Bilder nicht geladen werden");
 
-
         }
-    
-}
+
+    }
 }

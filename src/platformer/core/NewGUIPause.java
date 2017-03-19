@@ -96,29 +96,28 @@ public class NewGUIPause extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnNeustartenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnNeustartenActionPerformed
-        
+
         //Var.jf1 = new JFrame();
         //Var.jf1.setVisible(false);
-         //this.setVisible(false);
+        //this.setVisible(false);
     }//GEN-LAST:event_jbtnNeustartenActionPerformed
 
     private void jbtnEinstellungenMenüActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnEinstellungenMenüActionPerformed
-       //öffne EInstellungsfenster
-       new NewGUIEinstellungen().setVisible(true);
-       this.setVisible(false);
+        //öffne EInstellungsfenster
+        new NewGUIEinstellungen().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jbtnEinstellungenMenüActionPerformed
 
     private void jbtnWeiterspielenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnWeiterspielenActionPerformed
-     this.setVisible(false);
-     //Spiel ansich muss noch pausiert werden
-     
+        this.setVisible(false);
+        //Spiel ansich muss noch pausiert werden
+
     }//GEN-LAST:event_jbtnWeiterspielenActionPerformed
 
     private void jbtnMenüActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnMenüActionPerformed
-      new NewGUISicherheitsabfrage().setVisible(true);
-      this.setVisible(false);
+        new NewGUISicherheitsabfrage().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jbtnMenüActionPerformed
-
 
     /**
      * @param args the command line arguments
@@ -161,12 +160,5 @@ public class NewGUIPause extends javax.swing.JFrame {
     private javax.swing.JButton jbtnNeustarten;
     private javax.swing.JButton jbtnWeiterspielen;
     // End of variables declaration//GEN-END:variables
-
-
-        
-
-
-
-
 
 }

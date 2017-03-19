@@ -80,13 +80,13 @@ public class NewGUISicherheitsabfrage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnJaVerlassenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnJaVerlassenActionPerformed
-    new NewGUI().setVisible(true);
-    this.setVisible(false);
-    Var.jf1.setVisible(false);
+        new NewGUI().setVisible(true);
+        this.setVisible(false);
+        Var.jf1.setVisible(false);
     }//GEN-LAST:event_jbtnJaVerlassenActionPerformed
 
     private void jbtnNeinVerlassenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnNeinVerlassenActionPerformed
-     this.setVisible(false);  
+        this.setVisible(false);
     }//GEN-LAST:event_jbtnNeinVerlassenActionPerformed
 
     /**

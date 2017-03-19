@@ -18,19 +18,20 @@ public class KeyActions {
     }
 
     static void movedown() {
-        Var.play.setY(Var.play.getY()+3);
+        Var.play.setY(Var.play.getY() + 3);
     }
 
     static void moveleft() {
-        Var.play.setX(Var.play.getX()-3);
+        Var.play.setX(Var.play.getX() - 3);
     }
 
     static void moveright() {
-        Var.play.setX(Var.play.getX()+3);
+        Var.play.setX(Var.play.getX() + 3);
     }
-    static void pause(){
-    new NewGUIPause().setVisible(true);
-    
+
+    static void pause() {
+        new NewGUIPause().setVisible(true);
+
     }
-    
+
 }
