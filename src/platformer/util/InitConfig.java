@@ -5,7 +5,7 @@
  */
 package platformer.util;
 
-import platformer.core.Erstesgame;
+import platformer.core.Platformer;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -22,14 +22,14 @@ public class InitConfig {
 
     public static void initIni(File pIniloc) {
         //Trying to create the ini File
-        Erstesgame.print("Trying to create config..");
+        Platformer.print("Trying to create config..");
         try {
             if (pIniloc.createNewFile()) {
-                Erstesgame.print("Successfully created config file..");
+                Platformer.print("Successfully created config file..");
                 writedefault(pIniloc);
             }
         } catch (IOException e) {
-            Erstesgame.print("Error creating config..");
+            Platformer.print("Error creating config..");
         }
 
     }
@@ -48,7 +48,7 @@ public class InitConfig {
             Logger.getLogger(InitConfig.class.getName()).log(Level.SEVERE, null, ex);
         }
         //values to write
-        iniconf.put("Main", "versioncreated", Erstesgame.version);
+        iniconf.put("Main", "versioncreated", Platformer.VERSION);
         iniconf.put("GUI", "fullscreen", 1);
         //trys to save ini
         try {

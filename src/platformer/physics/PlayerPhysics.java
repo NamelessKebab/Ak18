@@ -5,7 +5,9 @@
  */
 package platformer.physics;
 
-import platformer.core.Player;
+import platformer.objects.Player;
+import platformer.data.Var;
+import platformer.objects.Objekt;
 
 /**
  * PlayerPhysics.java Zweck: Steuert die Physik eines Player Objekts
@@ -29,7 +31,7 @@ public class PlayerPhysics {
      * (default ~100)
      * @param deltaTime Die Zeit für die die Physik berechnet werden soll
      */
-    public static void update(platformer.core.Player player, double gravity, double deltaTime) {
+    public static void update(platformer.objects.Player player, double gravity, double deltaTime) {
         int alty, y;
         double ySpeed;
         alty = player.getY();
@@ -37,7 +39,8 @@ public class PlayerPhysics {
         player.setySpeed(ySpeed);
         y = (int) (player.getY() + player.getySpeed() * deltaTime);
         player.setY(y);
-        if (y > 550) {
+        if (kollisionsAbfrage(player, Var.getBlock())) {
+            player.setySpeed(0);
             player.setY(alty);
         }
         System.out.println("Y: " + y + " ySpeed: " + ySpeed);
@@ -53,5 +56,22 @@ public class PlayerPhysics {
     public static void springe(Player player) {
         player.setySpeed(-100);
     }
-
+    
+    public static boolean kollisionsAbfrage(Player player, Objekt object) {
+        boolean collision = false;
+        int pX = player.getX();
+        int pY = player.getY();
+        int oX = object.getX();
+        int oY = object.getY();
+        int pH = 20;
+        int pW = 20;
+        int oH = object.getHEIGHT();
+        int oW = object.getWIDTH();
+        if (pY + pH >= oY && pY <= oY + oH) {
+            collision = true;
+            System.out.println("Collide!");
+        }
+        return collision;
+    }
+    
 }

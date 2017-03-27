@@ -5,6 +5,7 @@
  */
 package platformer.core;
 
+import platformer.data.Var;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -23,24 +24,24 @@ public class KeyHandler implements KeyListener {
     public void keyPressed(KeyEvent e) { // gehalten wird
 
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            Var.moveup = true;
+            Var.setMoveup(true);
 
             System.out.println("teeeetst");
         }
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            Var.movedown = true;
+            Var.setMovedown(true);
             KeyActions.movedown();
         }
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            Var.moveleft = true;
+            Var.setMoveleft(true);
             KeyActions.moveleft();
         }
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            Var.moveright = true;
+            Var.setMoveright(true);
             KeyActions.moveright();
         }
         if (e.getKeyCode() == KeyEvent.VK_P) {
-            Var.pause = true;
+            Var.setPause(true);
             KeyActions.pause();
         }
 
@@ -49,24 +50,24 @@ public class KeyHandler implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) { // losgelassen wird
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            Var.moveup = false;
+            Var.setMoveup(false);
             KeyActions.moveup();
         }
 
         if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            Var.moveup = false;
+            Var.setMoveup(false);
         }
 
         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            Var.moveup = false;
+            Var.setMoveup(false);
         }
 
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            Var.moveup = false;
+            Var.setMoveup(false);
         }
 
         if (e.getKeyCode() == KeyEvent.VK_P) {
-            Var.pause = false;
+            Var.setPause(false);
 
         }
 

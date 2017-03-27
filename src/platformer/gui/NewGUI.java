@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package platformer.core;
+package platformer.gui;
+
+import platformer.data.Var;
 
 /**
  *
@@ -94,9 +96,9 @@ public class NewGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnSpielstartenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSpielstartenActionPerformed
-        Var.jf1.setVisible(true);
+        Var.getJf1().setVisible(true);
         this.setVisible(false);
-        Var.gameStarted = true;
+        Var.setGameStarted(true);
         this.dispose();
     }//GEN-LAST:event_jbtnSpielstartenActionPerformed
 
