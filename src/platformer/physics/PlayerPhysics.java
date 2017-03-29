@@ -56,7 +56,7 @@ public class PlayerPhysics {
     public static void springe(Player player) {
         player.setySpeed(-100);
     }
-    
+
     public static boolean kollisionsAbfrage(Player player, Objekt object) {
         boolean collision = false;
         int pX = player.getX();
@@ -67,11 +67,11 @@ public class PlayerPhysics {
         int pW = 20;
         int oH = object.getHEIGHT();
         int oW = object.getWIDTH();
-        if (pY + pH >= oY && pY <= oY + oH) {
+        if ((pY + pH >= oY && pY <= oY + oH) && (pX + pW >= oX && pX + pW <= oX + oW)) {
             collision = true;
             System.out.println("Collide!");
         }
         return collision;
     }
-    
+
 }

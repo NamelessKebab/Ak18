@@ -75,7 +75,7 @@ public class Player extends Objekt{
     }
 
     public void setY(int y) {
-        this.X = y;
+        this.Y = y;
     }
 
     public void setySpeed(double ySpeed) {
