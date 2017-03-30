@@ -5,28 +5,32 @@
  */
 package platformer.core;
 
+import platformer.data.Var;
+import platformer.gui.NewGUIPause;
 import platformer.physics.PlayerPhysics;
 
 /**
+ * KeyActions.java Zweck: Beinhaltet Methoden die bei dem Druck von Tasten
+ * getriggert werden.
  *
  * @author Julian Blazek
  */
 public class KeyActions {
 
     static void moveup() {
-        PlayerPhysics.springe(Var.play);
+        PlayerPhysics.springe(Var.getPlay());
     }
 
     static void movedown() {
-        Var.play.setY(Var.play.getY() + 3);
+        Var.getPlay().setY(Var.getPlay().getY() + 3);
     }
 
     static void moveleft() {
-        Var.play.setX(Var.play.getX() - 3);
+        Var.getPlay().setX(Var.getPlay().getX() - 3);
     }
 
     static void moveright() {
-        Var.play.setX(Var.play.getX() + 3);
+        Var.getPlay().setX(Var.getPlay().getX() + 3);
     }
 
     static void pause() {

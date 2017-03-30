@@ -5,6 +5,7 @@
  */
 package platformer.core;
 
+import platformer.data.Var;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
@@ -13,8 +14,11 @@ import java.util.logging.Logger;
 import javax.swing.Timer;
 
 /**
+ * TimerClass.java Zweck: Erzeugt einen Timer und steuert mit diesem die Klasse
+ * TimerActionPerformed an welche das Spiel am laufen hält.
  *
  * @author Julian Blazek
+ * @version 1.0 13.03.2017
  */
 public class TimerClass {
 
@@ -31,15 +35,15 @@ class TimerActionPerformed implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Var.oldTime = Var.newTime;
-        Var.newTime = System.nanoTime();
-        if (Var.gameStarted) {
-            platformer.physics.PlayerPhysics.update(Var.play, 98.1, diffTime());
+        Var.setOldTime(Var.getNewTime());
+        Var.setNewTime(System.nanoTime());
+        if (Var.isGameStarted()) {
+            platformer.physics.PlayerPhysics.update(Var.getPlay(), 98.1, diffTime());
         }
-        platformer.core.Var.lbl1.repaint();
+        platformer.data.Var.getLbl1().repaint();
     }
 
     private double diffTime() {
-        return (Var.newTime - Var.oldTime) / (1 * (Math.pow(10, 9)));
+        return (Var.getNewTime() - Var.getOldTime()) / (1 * (Math.pow(10, 9)));
     }
 }

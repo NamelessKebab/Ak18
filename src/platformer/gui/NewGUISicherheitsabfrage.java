@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package platformer.core;
+package platformer.gui;
+
+import platformer.data.Var;
 
 /**
  *
@@ -82,7 +84,7 @@ public class NewGUISicherheitsabfrage extends javax.swing.JFrame {
     private void jbtnJaVerlassenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnJaVerlassenActionPerformed
         new NewGUI().setVisible(true);
         this.setVisible(false);
-        Var.jf1.setVisible(false);
+        Var.getJf1().setVisible(false);
     }//GEN-LAST:event_jbtnJaVerlassenActionPerformed
 
     private void jbtnNeinVerlassenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnNeinVerlassenActionPerformed

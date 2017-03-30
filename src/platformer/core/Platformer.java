@@ -5,25 +5,32 @@
  */
 package platformer.core;
 
+import platformer.objects.Player;
+import platformer.data.Var;
+import platformer.gui.GamePanel;
+import platformer.gui.Gui;
+import platformer.gui.NewGUI;
+
 /**
+ * Platformer.java Zweck: Start Klasse. Initialisiert die Objekte aller Klassen.
  *
  * @author Florian Rost
  */
-public class Erstesgame {
+public class Platformer {
 
-    final public static String version = "0.0.1";
+    final public static String VERSION = "0.0.1";
 
     /**
      * @param args the command line arguments (not used)
      */
     public static void main(String[] args) {
 
-        new Gui();         //Klassen werden durch 
-        new Var();         // die main
-        new TimerClass();  // aufgerufen
-        new Label();
+        Var.setJf1(new Gui());
+        new Var();
+        new TimerClass();
+        new GamePanel();
         new NewGUI().setVisible(true);
-        Var.play = new Player(0, 0, Var.sprite);
+        Var.setPlay(new Player(0, 0, 20, 20, Var.getSprite()));
         System.out.println("DÃ¶ner");
 
 //

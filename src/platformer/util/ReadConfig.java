@@ -5,7 +5,7 @@
  */
 package platformer.util;
 
-import platformer.core.Erstesgame;
+import platformer.core.Platformer;
 import java.io.File;
 import java.io.IOException;
 import org.ini4j.*;
@@ -31,29 +31,29 @@ public class ReadConfig {
             inidir = new File(System.getenv("XDG_CONFIG_HOME"), "Erstesgame");
             iniloc = new File(System.getenv("XDG_CONFIG_HOME"), "Erstesgame\\config.ini");
         } else {
-            Erstesgame.print("Sorry, but your System is not yet supported for using Configs..");
+            Platformer.print("Sorry, but your System is not yet supported for using Configs..");
         }
         //Checks whether directory exists, if not it will create it.
         if (inidir.exists()) {
-            Erstesgame.print("Erstesgame dir already exists. Loc: " + inidir.getPath());
+            Platformer.print("Erstesgame dir already exists. Loc: " + inidir.getPath());
         } else {
             if (inidir.mkdir()) {
-                Erstesgame.print("Erstesgame dir created..");
+                Platformer.print("Erstesgame dir created..");
             } else {
-                Erstesgame.print("Erstesgame dir failed to create.. Tried at: " + inidir.getPath());
+                Platformer.print("Erstesgame dir failed to create.. Tried at: " + inidir.getPath());
             }
         }
         //Loading INI
         try {
             //Checks whether ini exists..
             if (!iniloc.exists()) {
-                Erstesgame.print("Config doesn't exist..");
+                Platformer.print("Config doesn't exist..");
                 InitConfig.initIni(iniloc);
             }
             //creating the ini object
             iniconf = new Wini(iniloc);
         } catch (IOException e) {
-            Erstesgame.print("Error reading file..");
+            Platformer.print("Error reading file..");
         }
     }
 
