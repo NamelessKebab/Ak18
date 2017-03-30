@@ -10,6 +10,8 @@ import platformer.gui.NewGUIPause;
 import platformer.physics.PlayerPhysics;
 
 /**
+ * KeyActions.java Zweck: Beinhaltet Methoden die bei dem Druck von Tasten
+ * getriggert werden.
  *
  * @author Julian Blazek
  */

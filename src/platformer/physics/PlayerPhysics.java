@@ -13,7 +13,7 @@ import platformer.objects.Objekt;
  * PlayerPhysics.java Zweck: Steuert die Physik eines Player Objekts
  *
  * @author Julian Blazek
- * @version 1.0 17.03.2017
+ * @version 1.3 17.03.2017
  */
 public class PlayerPhysics {
 
@@ -22,13 +22,14 @@ public class PlayerPhysics {
      * basiert auf v=g*dt wobei v = ySpeed; g = gravity, t = deltaTime. y
      * basiert auf s=v*t wobei s = y0+y1; v = ySpeed; t = deltaTime.
      *
-     * Wäre der Player nun nach dem berechnen der Physik unterhalb des
-     * Bildschirm Randes, wird er wieder auf die vorherige y-Position
-     * zurückgesetzt und die Berechnung wird erneut ausgeführt.
+     * Durch die Kollisionsabfrage wird jeder Block geprüft ob er mit dem
+     * Spieler kollidiert. Kollidiert nun ein Block, so wird der Spieler auf die
+     * Position vor dem berechnen der Physik zurückgesetzt und die
+     * y-Geschwindigkeit auf 0 gesetzt.
      *
      * @param player Player Objekt
      * @param gravity Die Stärke der Gravität mit der gerechnet werden soll.
-     * (default ~100)
+     * (gut ist ~100)
      * @param deltaTime Die Zeit für die die Physik berechnet werden soll
      */
     public static void update(platformer.objects.Player player, double gravity, double deltaTime) {
@@ -57,14 +58,23 @@ public class PlayerPhysics {
         player.setySpeed(-100);
     }
 
+    /**
+     * Berechnet, ob der Spieler mit einem Objekt kollidiert. Erst wird geprüft
+     * ob in y-Richtung und dann ob auch noch in x-Richtung eine Kollision mit
+     * dem anderen Objekt stattfindet.
+     *
+     * @param player Ein Objekt der Klasse Spieler
+     * @param object Ein Objekt der Klasse Objekt oder einer Subklasse
+     * @return Kollidiert, boolean
+     */
     public static boolean kollisionsAbfrage(Player player, Objekt object) {
         boolean collision = false;
         int pX = player.getX();
         int pY = player.getY();
         int oX = object.getX();
         int oY = object.getY();
-        int pH = 20;
-        int pW = 20;
+        int pH = player.getHEIGHT();
+        int pW = player.getWIDTH();
         int oH = object.getHEIGHT();
         int oW = object.getWIDTH();
         if ((pY + pH >= oY && pY <= oY + oH) && (pX + pW >= oX && pX + pW <= oX + oW)) {
