@@ -5,6 +5,8 @@
  */
 package platformer.objects;
 
+import java.awt.image.BufferedImage;
+
 /**
  *
  * @author Julian Blazek
@@ -15,6 +17,7 @@ public abstract class Objekt {
     int Y = 0;
     int HEIGHT = 0;
     int WIDTH = 0;
+    BufferedImage SPRITE = null;
 
     public int getX() {
         return X;

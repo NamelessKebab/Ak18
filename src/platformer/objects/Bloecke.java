@@ -28,23 +28,23 @@ public class Bloecke extends Objekt {
 
     }
 
-    public boolean Kollisionsabfrage(int x_block, int y_block, int x_char, int y_char) {
-        if (x_char >= x_block && y_char >= y_block && y_char <= y_block + HEIGHT) { //Kolisionsabfrage: abfragen ob charakter gleiche x koordinate wie block hat
-            if (x_char >= x_block + WIDTH) {
-                coin = true;
-                return true;
-            } else {
-                if (x_char - 40 <= x_block + WIDTH) {
-                    coin = true;
-                    return true;
-                }
-
-            }
-        } else {
-            return false;
-        }
-        return false;
-    }
+//    public boolean Kollisionsabfrage(int x_block, int y_block, int x_char, int y_char) {
+//        if (x_char >= x_block && y_char >= y_block && y_char <= y_block + HEIGHT) { //Kolisionsabfrage: abfragen ob charakter gleiche x koordinate wie block hat
+//            if (x_char >= x_block + WIDTH) {
+//                coin = true;
+//                return true;
+//            } else {
+//                if (x_char - 40 <= x_block + WIDTH) {
+//                    coin = true;
+//                    return true;
+//                }
+//
+//            }
+//        } else {
+//            return false;
+//        }
+//        return false;
+//    }
 
     public int getX_Block() {
         return X;

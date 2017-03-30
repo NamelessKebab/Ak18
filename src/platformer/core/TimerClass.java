@@ -14,8 +14,11 @@ import java.util.logging.Logger;
 import javax.swing.Timer;
 
 /**
+ * TimerClass.java Zweck: Erzeugt einen Timer und steuert mit diesem die Klasse
+ * TimerActionPerformed an welche das Spiel am laufen hält.
  *
  * @author Julian Blazek
+ * @version 1.0 13.03.2017
  */
 public class TimerClass {
 

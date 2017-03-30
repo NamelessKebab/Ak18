@@ -6,6 +6,7 @@
 package platformer.objects;
 
 import java.awt.image.BufferedImage;
+import javax.swing.SpinnerListModel;
 
 /**
  * Diese Klasse dient dazu Variablen und Eigenschaften des Spielers zu
@@ -20,7 +21,6 @@ public class Player extends Objekt{
     private double ySpeed = 0;
     private int altX;
     private int altY;
-    private BufferedImage sprite;
 
     /**
      * Der Konstruktor dieser Klasse welcher sofort einige Werte speichert.
@@ -36,15 +36,7 @@ public class Player extends Objekt{
         this.Y = y;
         this.WIDTH = width;
         this.HEIGHT = height;
-        this.sprite = sprite;
-    }
-
-    public int getX() {
-        return X;
-    }
-
-    public int getY() {
-        return Y;
+        this.SPRITE = sprite;
     }
 
     public double getxSpeed() {
@@ -67,7 +59,7 @@ public class Player extends Objekt{
      * @return Gibt die gespeicherte sprite des Objekts zurück.
      */
     public BufferedImage getSprite() {
-        return sprite;
+        return SPRITE;
     }
 
     public void setX(int x) {
