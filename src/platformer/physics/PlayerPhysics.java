@@ -40,9 +40,11 @@ public class PlayerPhysics {
         player.setySpeed(ySpeed);
         y = (int) (player.getY() + player.getySpeed() * deltaTime);
         player.setY(y);
-        if (kollisionsAbfrage(player, Var.getBlock())) {
-            player.setySpeed(0);
-            player.setY(alty);
+        for(Objekt objekt : Var.getObjekte()){
+            if (kollisionsAbfrage(player, objekt)) {
+                player.setySpeed(0);
+                player.setY(alty);
+            }
         }
         System.out.println("Y: " + y + " ySpeed: " + ySpeed);
     }

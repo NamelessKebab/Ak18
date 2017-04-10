@@ -16,9 +16,9 @@ import org.ini4j.*;
  *
  * @author Julian
  */
-public class InitConfig {
+public class InitINI {
 
-    private static Wini iniconf;
+    private static Ini iniconf;
 
     public static void initIni(File pIniloc) {
         //Trying to create the ini File
@@ -45,16 +45,15 @@ public class InitConfig {
         try {
             iniconf = new Wini(pIniloc);
         } catch (IOException ex) {
-            Logger.getLogger(InitConfig.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(InitINI.class.getName()).log(Level.SEVERE, null, ex);
         }
         //values to write
         iniconf.put("Main", "versioncreated", Platformer.VERSION);
-        iniconf.put("GUI", "fullscreen", 1);
         //trys to save ini
         try {
             iniconf.store();
         } catch (IOException ex) {
-            Logger.getLogger(InitConfig.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(InitINI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

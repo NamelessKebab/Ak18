@@ -48,7 +48,7 @@ public class ReadConfig {
             //Checks whether ini exists..
             if (!iniloc.exists()) {
                 Platformer.print("Config doesn't exist..");
-                InitConfig.initIni(iniloc);
+                InitINI.initIni(iniloc);
             }
             //creating the ini object
             iniconf = new Wini(iniloc);
