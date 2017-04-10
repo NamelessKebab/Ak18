@@ -8,8 +8,10 @@ package platformer.gui;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.util.Iterator;
 import javax.swing.JLabel;
 import platformer.data.Var;
+import platformer.objects.Objekt;
 
 /**
  *
@@ -27,6 +29,13 @@ public class GamePanel extends JLabel {
         g.drawImage(Var.getImgBackground1(), 0, Var.getBackgroundY1(), 800, 600, null);// letzten 3 und 2 die bild pixel
         //g.drawImage(Var.ib1,0 , Var.backgroundY2, null); /7später 2 bild was wiederholt wird
         g.fillRect(Var.getPlay().getX(), Var.getPlay().getY(), 20, 20); // Immer wieder gezeichnet
+        render(g);
+    }
+
+    private void render(Graphics g) {
+        for (Objekt objekt : Var.getObjekte()) {
+            g.fillRect(objekt.getX(), objekt.getY(), objekt.getWIDTH(), objekt.getHEIGHT());
+        }
     }
 
 }

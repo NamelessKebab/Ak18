@@ -11,7 +11,9 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import javax.swing.JFrame;
+import platformer.objects.Objekt;
 import platformer.util.Image;
 
 /**
@@ -38,10 +40,12 @@ public class Var {
     private static platformer.objects.Player play = null;
     private static boolean gameStarted = false;
     private static long oldTime;
+    private static ArrayList<Objekt> objekte = new ArrayList<Objekt>();
     private static long newTime = System.nanoTime();
-    private static platformer.objects.Bloecke block = new platformer.objects.Bloecke(0, 550, 800, 40, Color.yellow);
 
     public Var() {
+        objekte.add(new platformer.objects.Bloecke(0, 550, 400, 40, Color.yellow));
+        objekte.add(new platformer.objects.Bloecke(400,480,100,10,Color.BLUE));
         //background
 
         try {
@@ -51,7 +55,7 @@ public class Var {
 
         } catch (IOException | URISyntaxException e) {
 
-            System.out.println("Bilder nicht geladen werden");
+            System.out.println("Bilder konnten nicht geladen werden");
 
         }
 
@@ -296,16 +300,9 @@ public class Var {
     }
 
     /**
-     * @return the block
+     * @return the objekte
      */
-    public static platformer.objects.Bloecke getBlock() {
-        return block;
-    }
-
-    /**
-     * @param aBlock the block to set
-     */
-    public static void setBlock(platformer.objects.Bloecke aBlock) {
-        block = aBlock;
+    public static ArrayList<Objekt> getObjekte() {
+        return objekte;
     }
 }
