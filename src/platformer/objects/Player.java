@@ -6,7 +6,6 @@
 package platformer.objects;
 
 import java.awt.image.BufferedImage;
-import javax.swing.SpinnerListModel;
 
 /**
  * Diese Klasse dient dazu Variablen und Eigenschaften des Spielers zu
