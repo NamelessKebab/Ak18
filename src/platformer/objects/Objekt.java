@@ -5,6 +5,7 @@
  */
 package platformer.objects;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 /**
@@ -33,6 +34,11 @@ public abstract class Objekt {
 
     public int getWIDTH() {
         return WIDTH;
+    }
+    
+    public Rectangle getRekt(){
+        Rectangle rekt = new Rectangle(X,Y,WIDTH,HEIGHT);
+        return rekt;
     }
 
 }

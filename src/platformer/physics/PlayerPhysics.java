@@ -5,6 +5,7 @@
  */
 package platformer.physics;
 
+import java.awt.Rectangle;
 import platformer.objects.Player;
 import platformer.data.Var;
 import platformer.objects.Objekt;
@@ -40,7 +41,7 @@ public class PlayerPhysics {
         player.setySpeed(ySpeed);
         y = (int) (player.getY() + player.getySpeed() * deltaTime);
         player.setY(y);
-        for(Objekt objekt : Var.getObjekte()){
+        for (Objekt objekt : Var.getObjekte()) {
             if (kollisionsAbfrage(player, objekt)) {
                 player.setySpeed(0);
                 player.setY(alty);
@@ -71,15 +72,21 @@ public class PlayerPhysics {
      */
     public static boolean kollisionsAbfrage(Player player, Objekt object) {
         boolean collision = false;
-        int pX = player.getX();
-        int pY = player.getY();
-        int oX = object.getX();
-        int oY = object.getY();
-        int pH = player.getHEIGHT();
-        int pW = player.getWIDTH();
-        int oH = object.getHEIGHT();
-        int oW = object.getWIDTH();
-        if ((pY + pH >= oY && pY <= oY + oH) && (pX + pW >= oX && pX + pW <= oX + oW)) {
+//        int pX = player.getX();   Alte Kollisionsabfrage..
+//        int pY = player.getY();   Noch hier falls noch benötigt..
+//        int oX = object.getX();   [Rectangle] intersects() funktioniert jedoch besser
+//        int oY = object.getY();
+//        int pH = player.getHEIGHT();
+//        int pW = player.getWIDTH();
+//        int oH = object.getHEIGHT();
+//        int oW = object.getWIDTH()
+//        if ((pY + pH >= oY && pY <= oY + oH) && (pX + pW >= oX && pX + pW <= oX + oW)) {
+//            collision = true;
+//            System.out.println("Collide!");
+//        }
+        Rectangle playerRect = player.getRekt();
+        Rectangle objectRect = object.getRekt();
+        if (playerRect.intersects(objectRect)) {
             collision = true;
             System.out.println("Collide!");
         }
