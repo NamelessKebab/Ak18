@@ -14,7 +14,7 @@ import platformer.objects.Objekt;
  * PlayerPhysics.java Zweck: Steuert die Physik eines Player Objekts
  *
  * @author Julian Blazek
- * @version 1.3 17.03.2017
+ * @version 1.4 04.05.2017
  */
 public class PlayerPhysics {
 
