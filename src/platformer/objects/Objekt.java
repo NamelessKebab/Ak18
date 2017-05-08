@@ -5,7 +5,9 @@
  */
 package platformer.objects;
 
+import java.awt.Color;
 import java.awt.Rectangle;
+import java.awt.color.ColorSpace;
 import java.awt.image.BufferedImage;
 
 /**
@@ -19,6 +21,11 @@ public abstract class Objekt {
     int HEIGHT = 0;
     int WIDTH = 0;
     BufferedImage SPRITE = null;
+    Color COLOR = Color.DARK_GRAY;
+
+    public Color getCOLOR() {
+        return COLOR;
+    }
 
     public int getX() {
         return X;
@@ -35,9 +42,9 @@ public abstract class Objekt {
     public int getWIDTH() {
         return WIDTH;
     }
-    
-    public Rectangle getRekt(){
-        Rectangle rekt = new Rectangle(X,Y,WIDTH,HEIGHT);
+
+    public Rectangle getRekt() {
+        Rectangle rekt = new Rectangle(X, Y, WIDTH, HEIGHT);
         return rekt;
     }
 

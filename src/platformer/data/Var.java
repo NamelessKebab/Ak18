@@ -12,7 +12,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import javax.swing.JFrame;
 import platformer.objects.Objekt;
 import platformer.util.Image;
 
@@ -23,7 +22,7 @@ import platformer.util.Image;
 public class Var {
     // sollen wir objekte für die GUIs machen oder sie einfach immer neu ablaufen lassen?
     // sollten wir ein Package für die ganzen GUI dateien machen?
-
+    public static final String version = "v0.0.2.3-alpha";
     private static int screenwidth = 800;
     private static int screenheight = 600;
     private static boolean moveup = false;
@@ -44,12 +43,15 @@ public class Var {
     private static long newTime = System.nanoTime();
 
     public Var() {
-        objekte.add(new platformer.objects.Bloecke(0, 550, 400, 40, Color.yellow));
-        objekte.add(new platformer.objects.Bloecke(400,480,100,10,Color.BLUE));
+        Level level = platformer.objects.ReadLevel.readLevel("");
+        objekte = level.getObjekte();
+        play = level.getPlayer();
+//        objekte.add(new platformer.objects.Bloecke(0, 550, 400, 40, Color.yellow));
+//        objekte.add(new platformer.objects.Bloecke(400,480,100,10,Color.BLUE));
         //background
 
         try {
-            imgBackground1 = Image.getImage("/rsc/bProject.png");
+            imgBackground1 = Image.getImage("/rsc/images/bProject.png");
             //imgBackground1 = ImageIO.read(getClass().getResource("/rsc/bProject.png").toURI().toURL()); // Bild wird aus der .jar Datei / dem Quellverzeichnis geladen
             //sprite = ImageIO.read(getClass().getResource("/rsc/b1.png").toURI().toURL());
 
@@ -304,5 +306,12 @@ public class Var {
      */
     public static ArrayList<Objekt> getObjekte() {
         return objekte;
+    }
+
+    /**
+     * @param aObjekte the objekte to set
+     */
+    public static void setObjekte(ArrayList<Objekt> aObjekte) {
+        objekte = aObjekte;
     }
 }
