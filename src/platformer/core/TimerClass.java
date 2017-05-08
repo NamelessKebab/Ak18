@@ -8,9 +8,6 @@ package platformer.core;
 import platformer.data.Var;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.Timer;
 
 /**
@@ -25,7 +22,6 @@ public class TimerClass {
     Timer timer;
 
     public TimerClass() {
-        timer = new Timer(17, new TimerActionPerformed());
         timer.start();
     }
 
