@@ -22,7 +22,8 @@ public class NewGUI extends javax.swing.JFrame {
         initComponents();
 
         ComponentMover cm = new ComponentMover(this, TitleBar);
-
+        cm.setChangeCursor(false);
+        
         ComponentResizer cr = new ComponentResizer();
         cr.registerComponent(this);
         cr.setSnapSize(new java.awt.Dimension(10, 10));
@@ -45,6 +46,8 @@ public class NewGUI extends javax.swing.JFrame {
         jbtnSpielstarten = new javax.swing.JButton();
         btnBeende = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        lblInfo = new javax.swing.JLabel();
+        lblVersion = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         lblStart = new javax.swing.JLabel();
         lblSettings = new javax.swing.JLabel();
@@ -83,15 +86,33 @@ public class NewGUI extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(192, 108, 132));
 
+        lblInfo.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        lblInfo.setForeground(new java.awt.Color(255, 255, 255));
+        lblInfo.setText("Platformer");
+
+        lblVersion.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        lblVersion.setForeground(new java.awt.Color(204, 204, 204));
+        lblVersion.setText(platformer.data.Var.version);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblVersion))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 465, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 398, Short.MAX_VALUE)
+                .addComponent(lblVersion)
+                .addContainerGap())
         );
 
         jPanel1.setBackground(new java.awt.Color(53, 92, 125));
@@ -114,7 +135,7 @@ public class NewGUI extends javax.swing.JFrame {
             }
         });
 
-        lblSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsc/Settings_64px.png"))); // NOI18N
+        lblSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsc/images/Settings_64px.png"))); // NOI18N
         lblSettings.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblSettingsMouseClicked(evt);
@@ -131,28 +152,28 @@ public class NewGUI extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(lblSettings)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 213, Short.MAX_VALUE)
                 .addComponent(lblStart, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(297, Short.MAX_VALUE))
+                .addContainerGap(306, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblSettings, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblStart, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSettings))
+                .addContainerGap())
         );
 
         TitleBar.setBackground(new java.awt.Color(248, 177, 149));
         TitleBar.setPreferredSize(new java.awt.Dimension(0, 30));
 
         lblClose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsc/Close Window_32px.png"))); // NOI18N
+        lblClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsc/images/Close Window_32px.png"))); // NOI18N
         lblClose.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblCloseMouseClicked(evt);
@@ -235,11 +256,11 @@ public class NewGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_lblStartMouseClicked
 
     private void lblSettingsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSettingsMouseEntered
-        lblSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsc/Settings_64px_hover.png")));
+        lblSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsc/images/Settings_64px_hover.png")));
     }//GEN-LAST:event_lblSettingsMouseEntered
 
     private void lblSettingsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSettingsMouseExited
-        lblSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsc/Settings_64px.png")));
+        lblSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsc/images/Settings_64px.png")));
     }//GEN-LAST:event_lblSettingsMouseExited
 
     private void lblSettingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSettingsMouseClicked
@@ -295,7 +316,9 @@ public class NewGUI extends javax.swing.JFrame {
     private javax.swing.JButton jbtnSpielstarten;
     private javax.swing.JLabel lblClose;
     private javax.swing.JLabel lblFramename;
+    private javax.swing.JLabel lblInfo;
     private javax.swing.JLabel lblSettings;
     private javax.swing.JLabel lblStart;
+    private javax.swing.JLabel lblVersion;
     // End of variables declaration//GEN-END:variables
 }
