@@ -22,6 +22,7 @@ public class TimerClass {
     Timer timer;
 
     public TimerClass() {
+        timer = new Timer(32, new TimerActionPerformed());
         timer.start();
     }
 
