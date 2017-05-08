@@ -1,0 +1,25 @@
+---
+meta:
+    name: TestLevel
+
+player:
+    spawn:
+        X: 0
+        Y: 0
+        Sprite: null
+
+blocks:
+    floor:
+        Color: 13244 # (rgb = 0FFFFh * r + 0FFh * g + b) wenn keine Farbe angegeben dann wird letzte bzw. DARK_GREY benutzt.
+        Sprite: null
+        positions: # Format: [X,Y,W,H]
+            - [0,550,400,40]
+            - [400,480,100,10]
+            - [200,110,20,20]
+    penis:
+        Color: 855309
+        positions:
+            - [0,220,100,400]
+    test123:
+        positions:
+            - [500,10,40,40]

@@ -6,6 +6,8 @@
 package platformer.gui;
 
 import platformer.data.Var;
+import platformer.util.ComponentResizer;
+import platformer.util.ComponentMover;
 
 /**
  *
@@ -18,6 +20,15 @@ public class NewGUI extends javax.swing.JFrame {
      */
     public NewGUI() {
         initComponents();
+
+        ComponentMover cm = new ComponentMover(this, TitleBar);
+        cm.setChangeCursor(false);
+        
+        ComponentResizer cr = new ComponentResizer();
+        cr.registerComponent(this);
+        cr.setSnapSize(new java.awt.Dimension(10, 10));
+        cr.setMinimumSize(new java.awt.Dimension(800, 600));
+
     }
 
     /**
@@ -29,20 +40,20 @@ public class NewGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jbtnSpielstarten = new javax.swing.JButton();
         jbtnEinstellungen = new javax.swing.JButton();
         jbtnInformationen = new javax.swing.JButton();
         jbtnCredits = new javax.swing.JButton();
+        jbtnSpielstarten = new javax.swing.JButton();
         btnBeende = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jbtnSpielstarten.setText("Spiel starten");
-        jbtnSpielstarten.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnSpielstartenActionPerformed(evt);
-            }
-        });
+        jPanel3 = new javax.swing.JPanel();
+        lblInfo = new javax.swing.JLabel();
+        lblVersion = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        lblStart = new javax.swing.JLabel();
+        lblSettings = new javax.swing.JLabel();
+        TitleBar = new javax.swing.JPanel();
+        lblClose = new javax.swing.JLabel();
+        lblFramename = new javax.swing.JLabel();
 
         jbtnEinstellungen.setText("Einstellungen");
         jbtnEinstellungen.addActionListener(new java.awt.event.ActionListener() {
@@ -55,6 +66,13 @@ public class NewGUI extends javax.swing.JFrame {
 
         jbtnCredits.setText("Credits");
 
+        jbtnSpielstarten.setText("Spiel starten");
+        jbtnSpielstarten.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnSpielstartenActionPerformed(evt);
+            }
+        });
+
         btnBeende.setText("Beenden");
         btnBeende.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,54 +80,196 @@ public class NewGUI extends javax.swing.JFrame {
             }
         });
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setUndecorated(true);
+
+        jPanel3.setBackground(new java.awt.Color(192, 108, 132));
+
+        lblInfo.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        lblInfo.setForeground(new java.awt.Color(255, 255, 255));
+        lblInfo.setText("Platformer");
+
+        lblVersion.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        lblVersion.setForeground(new java.awt.Color(204, 204, 204));
+        lblVersion.setText(platformer.data.Var.version);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblVersion))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 398, Short.MAX_VALUE)
+                .addComponent(lblVersion)
+                .addContainerGap())
+        );
+
+        jPanel1.setBackground(new java.awt.Color(53, 92, 125));
+
+        lblStart.setBackground(new java.awt.Color(108, 91, 123));
+        lblStart.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblStart.setForeground(new java.awt.Color(255, 255, 255));
+        lblStart.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblStart.setText("Spiel Starten");
+        lblStart.setOpaque(true);
+        lblStart.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblStartMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblStartMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblStartMouseExited(evt);
+            }
+        });
+
+        lblSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsc/images/Settings_64px.png"))); // NOI18N
+        lblSettings.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSettingsMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblSettingsMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblSettingsMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblSettings)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 213, Short.MAX_VALUE)
+                .addComponent(lblStart, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(306, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblStart, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSettings))
+                .addContainerGap())
+        );
+
+        TitleBar.setBackground(new java.awt.Color(248, 177, 149));
+        TitleBar.setPreferredSize(new java.awt.Dimension(0, 30));
+
+        lblClose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsc/images/Close Window_32px.png"))); // NOI18N
+        lblClose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCloseMouseClicked(evt);
+            }
+        });
+
+        lblFramename.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblFramename.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblFramename.setText("Irgendein Name für das Fenster...");
+        lblFramename.setFocusable(false);
+
+        javax.swing.GroupLayout TitleBarLayout = new javax.swing.GroupLayout(TitleBar);
+        TitleBar.setLayout(TitleBarLayout);
+        TitleBarLayout.setHorizontalGroup(
+            TitleBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TitleBarLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(lblFramename)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblClose))
+        );
+        TitleBarLayout.setVerticalGroup(
+            TitleBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TitleBarLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(lblFramename)
+                .addContainerGap())
+            .addGroup(TitleBarLayout.createSequentialGroup()
+                .addComponent(lblClose)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(158, 158, 158)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnBeende, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jbtnInformationen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jbtnCredits, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jbtnEinstellungen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jbtnSpielstarten, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(143, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(TitleBar, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(jbtnSpielstarten, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jbtnEinstellungen)
-                .addGap(18, 18, 18)
-                .addComponent(jbtnInformationen)
-                .addGap(18, 18, 18)
-                .addComponent(jbtnCredits)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnBeende)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addComponent(TitleBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnSpielstartenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSpielstartenActionPerformed
-        Var.getJf1().setVisible(true);
-        this.setVisible(false);
-        Var.setGameStarted(true);
-        this.dispose();
+
     }//GEN-LAST:event_jbtnSpielstartenActionPerformed
 
     private void jbtnEinstellungenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnEinstellungenActionPerformed
-        new NewGUIEinstellungen().setVisible(true);
-
+        
     }//GEN-LAST:event_jbtnEinstellungenActionPerformed
 
     private void btnBeendeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBeendeActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnBeendeActionPerformed
+
+    private void lblStartMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStartMouseEntered
+        lblStart.setBackground(new java.awt.Color(246, 114, 128));
+    }//GEN-LAST:event_lblStartMouseEntered
+
+    private void lblStartMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStartMouseExited
+        lblStart.setBackground(new java.awt.Color(108, 91, 123));
+    }//GEN-LAST:event_lblStartMouseExited
+
+    private void lblStartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStartMouseClicked
+        Var.getJf1().setVisible(true);
+        this.setVisible(false);
+        Var.setGameStarted(true);
+        this.dispose();
+    }//GEN-LAST:event_lblStartMouseClicked
+
+    private void lblSettingsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSettingsMouseEntered
+        lblSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsc/images/Settings_64px_hover.png")));
+    }//GEN-LAST:event_lblSettingsMouseEntered
+
+    private void lblSettingsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSettingsMouseExited
+        lblSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsc/images/Settings_64px.png")));
+    }//GEN-LAST:event_lblSettingsMouseExited
+
+    private void lblSettingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSettingsMouseClicked
+        new NewGUIEinstellungen().setVisible(true);
+    }//GEN-LAST:event_lblSettingsMouseClicked
+
+    private void lblCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_lblCloseMouseClicked
 
     /**
      * @param args the command line arguments
@@ -146,10 +306,19 @@ public class NewGUI extends javax.swing.JFrame {
 //        });
 //    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel TitleBar;
     private javax.swing.JButton btnBeende;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JButton jbtnCredits;
     private javax.swing.JButton jbtnEinstellungen;
     private javax.swing.JButton jbtnInformationen;
     private javax.swing.JButton jbtnSpielstarten;
+    private javax.swing.JLabel lblClose;
+    private javax.swing.JLabel lblFramename;
+    private javax.swing.JLabel lblInfo;
+    private javax.swing.JLabel lblSettings;
+    private javax.swing.JLabel lblStart;
+    private javax.swing.JLabel lblVersion;
     // End of variables declaration//GEN-END:variables
 }

@@ -16,7 +16,6 @@ public class Bloecke extends Objekt {
 //    final int x, y;              //Block  x und y
 //    final int width, height;     // Block Höhe und weite
     boolean coin = false;
-    final Color COLOR;
     int h = 5;
 
     public Bloecke(int p_x, int p_y, int p_width, int p_height, Color p_color) {
