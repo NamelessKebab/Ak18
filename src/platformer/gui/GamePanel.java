@@ -34,7 +34,12 @@ public class GamePanel extends JLabel {
     private void render(Graphics g) {
         for (Objekt objekt : Var.getObjekte()) {
             g.setColor(objekt.getCOLOR());
-            g.fillRect(objekt.getX(), objekt.getY(), objekt.getWIDTH(), objekt.getHEIGHT());
+            if(objekt.getSPRITE() == null){
+                g.fillRect(objekt.getX(), objekt.getY(), objekt.getWIDTH(), objekt.getHEIGHT());
+            } else {
+                g.drawImage(objekt.getSPRITE(),objekt.getX(),objekt.getY(),objekt.getWIDTH(),objekt.getHEIGHT(),this);
+            }
+            
         }
     }
 

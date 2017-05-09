@@ -6,9 +6,11 @@
 package platformer.objects;
 
 import java.awt.Color;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
+import javax.imageio.ImageIO;
 import org.yaml.snakeyaml.Yaml;
 import platformer.data.Level;
 
@@ -33,6 +35,7 @@ public class ReadLevel {
         try {
             load = yaml.load(getClass().getResource("/rsc/levels/testlvl.yml").openStream());
         } catch (IOException ex) {
+            
         }
 
         Map map = (Map) load;
@@ -63,7 +66,15 @@ public class ReadLevel {
         lvlobject.bloecke = lvlobject.new Blocks();
         for (Object blockname : blocks.keySet()) {
             Map blockdata = (Map) blocks.get(blockname);
+            BufferedImage Sprite = null;
             Color color = null;
+            if (blockdata.get("Sprite") != null) {
+                try {
+                    Sprite = ImageIO.read(getClass().getResource((String) blockdata.get("Sprite")));
+                } catch (Exception ex) {
+                    System.out.println("Konnte Resource nicht laden: " + blockdata.get("Sprite"));
+                }
+            }
             if (blockdata.containsKey("Color")) {
                 color = new Color((int) blockdata.get("Color"));
             }
@@ -74,7 +85,12 @@ public class ReadLevel {
                 int Y = (int) pos.get(1);
                 int W = (int) pos.get(2);
                 int H = (int) pos.get(3);
-                lvlobject.bloecke.addBlock(new Bloecke(X, Y, W, H, color));
+                if(Sprite == null){
+                    lvlobject.bloecke.addBlock(new Bloecke(X, Y, W, H, color));
+                } else {
+                    lvlobject.bloecke.addBlock(new Bloecke(X, Y, W, H, Sprite));
+                }
+                
             }
 
         }

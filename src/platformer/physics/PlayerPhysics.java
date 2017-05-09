@@ -84,8 +84,8 @@ public class PlayerPhysics {
 //            collision = true;
 //            System.out.println("Collide!");
 //        }
-        Rectangle playerRect = player.getRekt();
-        Rectangle objectRect = object.getRekt();
+        Rectangle playerRect = player.getREKT();
+        Rectangle objectRect = object.getREKT();
         if (playerRect.intersects(objectRect)) {
             collision = true;
             System.out.println("Collide!");

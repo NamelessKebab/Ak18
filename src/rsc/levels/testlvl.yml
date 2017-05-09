@@ -11,15 +11,17 @@ player:
 blocks:
     floor:
         Color: 13244 # (rgb = 0FFFFh * r + 0FFh * g + b) wenn keine Farbe angegeben dann wird letzte bzw. DARK_GREY benutzt.
-        Sprite: null
+        Sprite: null # falls kein Sprite angegeben so wird die letzte Farbe bzw. die angegebene Farbe genutzt.
         positions: # Format: [X,Y,W,H]
             - [0,550,400,40]
             - [400,480,100,10]
             - [200,110,20,20]
-    penis:
+    pensi:
         Color: 855309
+        Sprite: 18387378kek
         positions:
             - [0,220,100,400]
     test123:
+        Sprite: /rsc/images/castleCenter_rounded.png
         positions:
             - [500,10,40,40]

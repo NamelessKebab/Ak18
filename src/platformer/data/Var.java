@@ -7,7 +7,6 @@ package platformer.data;
 
 import platformer.gui.GamePanel;
 import platformer.gui.Gui;
-import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URISyntaxException;
