@@ -18,7 +18,7 @@ import platformer.gui.NewGUI;
  */
 public class Platformer {
 
-    final public static String VERSION = "0.0.1";
+    final public static String VERSION = "v0.0.2.5-alpha";
 
     /**
      * @param args the command line arguments (not used)

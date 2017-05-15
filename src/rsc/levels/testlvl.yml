@@ -25,3 +25,4 @@ blocks:
         Sprite: /rsc/images/castleCenter_rounded.png
         positions:
             - [500,10,40,40]
+            - [300,300,100,100]
