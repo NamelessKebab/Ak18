@@ -8,9 +8,6 @@ package platformer.core;
 import platformer.data.Var;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.Timer;
 
 /**
@@ -25,7 +22,7 @@ public class TimerClass {
     Timer timer;
 
     public TimerClass() {
-        timer = new Timer(17, new TimerActionPerformed());
+        timer = new Timer(32, new TimerActionPerformed());
         timer.start();
     }
 
@@ -37,6 +34,7 @@ class TimerActionPerformed implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Var.setOldTime(Var.getNewTime());
         Var.setNewTime(System.nanoTime());
+        KeyHandler.processKeys();
         if (Var.isGameStarted()) {
             platformer.physics.PlayerPhysics.update(Var.getPlay(), 98.1, diffTime());
         }

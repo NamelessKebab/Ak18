@@ -8,12 +8,42 @@ package platformer.core;
 import platformer.data.Var;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
  * @author Florian Rost & Julian Blazek
  */
 public class KeyHandler implements KeyListener {
+
+    static void processKeys() {
+        if (Var.KeysPressed.size() > 0) {
+            for (int c : Var.KeysPressed) {
+                if (c == KeyEvent.VK_W) {
+                    Var.setMoveup(true);
+                    KeyActions.moveup();
+                }
+                if (c == KeyEvent.VK_S) {
+                    Var.setMovedown(true);
+                    KeyActions.movedown();
+                }
+                if (c == KeyEvent.VK_A) {
+                    Var.setMoveleft(true);
+                    KeyActions.moveleft();
+                }
+                if (c == KeyEvent.VK_D) {
+                    Var.setMoveright(true);
+                    KeyActions.moveright();
+                }
+                if (c == KeyEvent.VK_P) {
+                    Var.setPause(true);
+                    KeyActions.pause();
+                }
+            }
+
+        }
+    }
 
     @Override
     public void keyTyped(KeyEvent e) { // gedrückt und wieder losgelassen wird
@@ -22,55 +52,13 @@ public class KeyHandler implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) { // gehalten wird
-
-        if (e.getKeyCode() == KeyEvent.VK_UP) {
-            Var.setMoveup(true);
-
-            System.out.println("teeeetst");
-        }
-        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            Var.setMovedown(true);
-            KeyActions.movedown();
-        }
-        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            Var.setMoveleft(true);
-            KeyActions.moveleft();
-        }
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            Var.setMoveright(true);
-            KeyActions.moveright();
-        }
-        if (e.getKeyCode() == KeyEvent.VK_P) {
-            Var.setPause(true);
-            KeyActions.pause();
-        }
+        Var.KeysPressed.add(e.getKeyCode());
 
     }
 
     @Override
-    public void keyReleased(KeyEvent e) { // losgelassen wird
-        if (e.getKeyCode() == KeyEvent.VK_UP) {
-            Var.setMoveup(false);
-            KeyActions.moveup();
-        }
-
-        if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            Var.setMoveup(false);
-        }
-
-        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            Var.setMoveup(false);
-        }
-
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            Var.setMoveup(false);
-        }
-
-        if (e.getKeyCode() == KeyEvent.VK_P) {
-            Var.setPause(false);
-
-        }
-
+    public synchronized void keyReleased(KeyEvent e) { // losgelassen wird
+        Var.KeysPressed.remove(e.getKeyCode());
     }
 
 }

@@ -18,7 +18,9 @@ import platformer.physics.PlayerPhysics;
 public class KeyActions {
 
     static void moveup() {
-        PlayerPhysics.springe(Var.getPlay());
+        if (Var.getPlay().getySpeed() == 0) {
+            PlayerPhysics.springe(Var.getPlay());
+        }
     }
 
     static void movedown() {

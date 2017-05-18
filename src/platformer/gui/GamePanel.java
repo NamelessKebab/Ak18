@@ -8,7 +8,6 @@ package platformer.gui;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.util.Iterator;
 import javax.swing.JLabel;
 import platformer.data.Var;
 import platformer.objects.Objekt;
@@ -34,7 +33,13 @@ public class GamePanel extends JLabel {
 
     private void render(Graphics g) {
         for (Objekt objekt : Var.getObjekte()) {
-            g.fillRect(objekt.getX(), objekt.getY(), objekt.getWIDTH(), objekt.getHEIGHT());
+            g.setColor(objekt.getCOLOR());
+            if(objekt.getSPRITE() == null){
+                g.fillRect(objekt.getX(), objekt.getY(), objekt.getWIDTH(), objekt.getHEIGHT());
+            } else {
+                g.drawImage(objekt.getSPRITE(),objekt.getX(),objekt.getY(),objekt.getWIDTH(),objekt.getHEIGHT(),this);
+            }
+            
         }
     }
 
