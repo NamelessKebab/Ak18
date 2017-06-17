@@ -30,7 +30,7 @@ public class Platformer {
         new TimerClass();
         new GamePanel();
         new NewGUI().setVisible(true);
-        Var.setPlay(new Player(0, 0, 20, 20, Var.getSprite()));
+        Var.setPlay(new Player(0, 0, 20, 20, null));
         System.out.println("DÃ¶ner");
 
 //
