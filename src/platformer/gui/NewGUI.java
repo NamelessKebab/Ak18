@@ -92,7 +92,7 @@ public class NewGUI extends javax.swing.JFrame {
 
         lblVersion.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         lblVersion.setForeground(new java.awt.Color(204, 204, 204));
-        lblVersion.setText(platformer.data.Var.version);
+        lblVersion.setText(platformer.core.Platformer.VERSION);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

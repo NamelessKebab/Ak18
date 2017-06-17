@@ -43,9 +43,13 @@ public abstract class Objekt {
         return WIDTH;
     }
 
-    public Rectangle getRekt() {
+    public Rectangle getREKT() {
         Rectangle rekt = new Rectangle(X, Y, WIDTH, HEIGHT);
         return rekt;
+    }
+
+    public BufferedImage getSPRITE() {
+        return SPRITE;
     }
 
 }

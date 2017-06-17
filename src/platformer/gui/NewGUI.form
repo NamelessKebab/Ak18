@@ -134,7 +134,7 @@
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="platformer.data.Var.version" type="code"/>
+              <Connection code="platformer.core.Platformer.VERSION" type="code"/>
             </Property>
           </Properties>
         </Component>

@@ -45,9 +45,10 @@ public class PlayerPhysics {
             if (kollisionsAbfrage(player, objekt)) {
                 player.setySpeed(0);
                 player.setY(alty);
+                
             }
         }
-        System.out.println("Y: " + y + " ySpeed: " + ySpeed);
+        
     }
 
     /**
@@ -84,11 +85,11 @@ public class PlayerPhysics {
 //            collision = true;
 //            System.out.println("Collide!");
 //        }
-        Rectangle playerRect = player.getRekt();
-        Rectangle objectRect = object.getRekt();
+        Rectangle playerRect = player.getREKT();
+        Rectangle objectRect = object.getREKT();
         if (playerRect.intersects(objectRect)) {
             collision = true;
-            System.out.println("Collide!");
+            
         }
         return collision;
     }

@@ -22,7 +22,7 @@ public class TimerClass {
     Timer timer;
 
     public TimerClass() {
-        timer = new Timer(32, new TimerActionPerformed());
+        timer = new Timer(18, new TimerActionPerformed());
         timer.start();
     }
 
@@ -34,8 +34,9 @@ class TimerActionPerformed implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Var.setOldTime(Var.getNewTime());
         Var.setNewTime(System.nanoTime());
+        KeyHandler.processKeys();
         if (Var.isGameStarted()) {
-            platformer.physics.PlayerPhysics.update(Var.getPlay(), 98.1, diffTime());
+            platformer.physics.PlayerPhysics.update(Var.getPlay(), 50, diffTime());
         }
         platformer.data.Var.getLbl1().repaint();
     }

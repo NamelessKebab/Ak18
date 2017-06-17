@@ -6,6 +6,7 @@
 package platformer.objects;
 
 import java.awt.Color;
+import java.awt.image.BufferedImage;
 
 /**
  *
@@ -15,7 +16,6 @@ public class Bloecke extends Objekt {
 
 //    final int x, y;              //Block  x und y
 //    final int width, height;     // Block Höhe und weite
-    boolean coin = false;
     int h = 5;
 
     public Bloecke(int p_x, int p_y, int p_width, int p_height, Color p_color) {
@@ -24,7 +24,14 @@ public class Bloecke extends Objekt {
         WIDTH = p_width;
         HEIGHT = p_height;
         COLOR = p_color;
+    }
 
+    public Bloecke(int p_x, int p_y, int p_width, int p_height, BufferedImage p_sprite) {
+        X = p_x;
+        Y = p_y;
+        WIDTH = p_width;
+        HEIGHT = p_height;
+        SPRITE = p_sprite;
     }
 
 //    public boolean Kollisionsabfrage(int x_block, int y_block, int x_char, int y_char) {
@@ -44,7 +51,6 @@ public class Bloecke extends Objekt {
 //        }
 //        return false;
 //    }
-
     public int getX_Block() {
         return X;
     }
@@ -65,7 +71,4 @@ public class Bloecke extends Objekt {
         return COLOR;
     }
 
-    public boolean Coin() {
-        return coin;
-    }
 }
