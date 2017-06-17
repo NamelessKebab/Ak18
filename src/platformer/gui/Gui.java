@@ -13,7 +13,7 @@ import platformer.data.Var;
  *
  * @author Florian Rost
  */
-public class Gui extends JFrame{ //Spielfenster
+public class Gui extends JFrame { //Spielfenster
 
     public Gui() {
         init();
@@ -21,7 +21,7 @@ public class Gui extends JFrame{ //Spielfenster
 
     private void init() {
         setSize(Var.getScreenwidth(), Var.getScreenheight()); // GUI breite und dicke
-        setLocationRelativeTo(null);//Objekt wird in die Mitte geschoben
+        setLocationRelativeTo(null);//Objekt wird in die Mitte geschoben      
         setVisible(false);
         setLayout(null);
         setTitle("Jump and Run");

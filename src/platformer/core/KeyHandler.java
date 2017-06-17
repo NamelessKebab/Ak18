@@ -37,6 +37,7 @@ public class KeyHandler implements KeyListener {
                 if (c == KeyEvent.VK_P) {
                     Var.setPause(true);
                     KeyActions.pause();
+                    Var.KeysPressed.remove(KeyEvent.VK_P);
                 }
             }
 

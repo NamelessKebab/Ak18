@@ -36,7 +36,7 @@ class TimerActionPerformed implements ActionListener {
         Var.setNewTime(System.nanoTime());
         KeyHandler.processKeys();
         if (Var.isGameStarted()) {
-            platformer.physics.PlayerPhysics.update(Var.getPlay(), 50, diffTime());
+            platformer.physics.PlayerPhysics.update(Var.getPlay(), 100, diffTime());
         }
         platformer.data.Var.getLbl1().repaint();
     }
