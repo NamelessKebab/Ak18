@@ -8,11 +8,14 @@ package platformer.data;
 import platformer.gui.GamePanel;
 import platformer.gui.Gui;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Logger;
+import platformer.objects.LevelParser;
 import platformer.objects.Objekt;
 import platformer.util.Image;
 
@@ -45,7 +48,12 @@ public class Var {
     public static final Set<Integer> KeysPressed = new HashSet<>();
 
     public Var() {
-        Level level = platformer.objects.ReadLevel.readLevel("");
+        Level level = null;
+        try {
+            level = new LevelParser(new File(getClass().getResource("/rsc/levels/testlvl.yml").toURI())).readLevel();
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(Var.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
         objekte = level.getObjekte();
         play = level.getPlayer();
 //        objekte.add(new platformer.objects.Bloecke(0, 550, 400, 40, Color.yellow));

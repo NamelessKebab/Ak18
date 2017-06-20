@@ -5,6 +5,7 @@
  */
 package platformer.data;
 
+import java.awt.Dimension;
 import java.util.ArrayList;
 import platformer.objects.Objekt;
 import platformer.objects.Player;
@@ -14,12 +15,13 @@ import platformer.objects.Player;
  * @author Julian Blazek
  */
 public class Level {
+
     private ArrayList<Objekt> objekte = new ArrayList<Objekt>();
     private String lvlname;
 
-    private Player player;
-    
-    public Blocks bloecke;
+    private Dimension size;
+
+    private Player player = new Player(0, 0, 0, 0, null);
 
     public void setObjekte(ArrayList<Objekt> objekte) {
         this.objekte = objekte;
@@ -28,7 +30,7 @@ public class Level {
     public ArrayList<Objekt> getObjekte() {
         return objekte;
     }
-    
+
     public String getLvlname() {
         return lvlname;
     }
@@ -44,21 +46,20 @@ public class Level {
     public Player getPlayer() {
         return player;
     }
+
     
-    public class Blocks {
 
-        private ArrayList<Objekt> bloecke;
+    /**
+     * @return the size
+     */
+    public Dimension getSize() {
+        return size;
+    }
 
-        public Blocks() {
-            bloecke = new ArrayList<>();
-        }
-
-        public void addBlock(Objekt obj) {
-            bloecke.add(obj);
-        }
-
-        public ArrayList<Objekt> getBloecke() {
-            return bloecke;
-        }
+    /**
+     * @param size the size to set
+     */
+    public void setSize(Dimension size) {
+        this.size = size;
     }
 }
