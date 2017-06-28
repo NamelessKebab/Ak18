@@ -5,8 +5,6 @@
  */
 package platformer.gui;
 
-import platformer.data.Var;
-
 /**
  *
  * @author Florian Rost
@@ -84,7 +82,7 @@ public class NewGUISicherheitsabfrage extends javax.swing.JFrame {
     private void jbtnJaVerlassenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnJaVerlassenActionPerformed
         new NewGUI().setVisible(true);
         this.setVisible(false);
-        Var.getJf1().setVisible(false);
+        
     }//GEN-LAST:event_jbtnJaVerlassenActionPerformed
 
     private void jbtnNeinVerlassenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnNeinVerlassenActionPerformed
@@ -116,6 +114,7 @@ public class NewGUISicherheitsabfrage extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(NewGUISicherheitsabfrage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

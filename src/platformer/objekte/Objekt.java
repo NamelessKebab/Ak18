@@ -3,21 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package platformer.objects;
+package platformer.objekte;
 
 import java.awt.Color;
 import java.awt.Rectangle;
-import java.awt.color.ColorSpace;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 
 /**
  *
  * @author Julian Blazek
  */
-public abstract class Objekt {
+public abstract class Objekt implements Serializable{
 
-    int X = 0;
-    int Y = 0;
+    static final long serialVersionUID = 3;
+    
+    double X = 0;
+    double Y = 0;
     int HEIGHT = 0;
     int WIDTH = 0;
     BufferedImage SPRITE = null;
@@ -28,11 +30,11 @@ public abstract class Objekt {
     }
 
     public int getX() {
-        return X;
+        return (int) X;
     }
 
     public int getY() {
-        return Y;
+        return (int) Y;
     }
 
     public int getHEIGHT() {
@@ -44,12 +46,15 @@ public abstract class Objekt {
     }
 
     public Rectangle getREKT() {
-        Rectangle rekt = new Rectangle(X, Y, WIDTH, HEIGHT);
+        Rectangle rekt = new Rectangle((int) X, (int) Y, WIDTH, HEIGHT);
         return rekt;
     }
 
     public BufferedImage getSPRITE() {
         return SPRITE;
+    }
+
+    public void update(double deltaTime) {
     }
 
 }

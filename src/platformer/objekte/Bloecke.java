@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package platformer.objects;
+package platformer.objekte;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -52,11 +52,11 @@ public class Bloecke extends Objekt {
 //        return false;
 //    }
     public int getX_Block() {
-        return X;
+        return (int) X;
     }
 
     public int getY_Block() {
-        return Y;
+        return (int) Y;
     }
 
     public int getWidth() {

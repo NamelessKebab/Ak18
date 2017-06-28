@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package platformer.objects;
+package platformer.objekte;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 /**
@@ -12,14 +13,17 @@ import java.awt.image.BufferedImage;
  * speichern.
  *
  * @author Julian Blazek
- * @version 1.0 13.03.2017
+ * @version 1.3 13.03.2017
  */
 public class Player extends Objekt{
 
+    static final long serialVersionUID = 3;
+    
     private double xSpeed = 0;
     private double ySpeed = 0;
     private int altX;
     private int altY;
+    private double gravity = 5;
 
     /**
      * Der Konstruktor dieser Klasse welcher sofort einige Werte speichert.
@@ -80,5 +84,36 @@ public class Player extends Objekt{
     public void setAltY(int altY) {
         this.altY = altY;
     }
-
+    
+    @Override
+    public void update(double deltaTime){
+        int alty, y;
+        alty = getY();
+        ySpeed = getySpeed() + gravity * deltaTime;
+        y = (int) (getY() + getySpeed() * deltaTime);
+        setY(y);
+        for (Objekt objekt : platformer.Platformer.level.getObjekte()) {
+            if (kollisionsAbfrage(this, objekt)) {
+                setySpeed(0);
+                setY(alty);
+                
+            }
+        }
+    }
+    
+    public static boolean kollisionsAbfrage(Player player, Objekt object) {
+        boolean collision = false;
+        
+        Rectangle playerRect = player.getREKT();
+        Rectangle objectRect = object.getREKT();
+        if (playerRect.intersects(objectRect)) {
+            collision = true;
+            
+        }
+        return collision;
+    }
+    
+    public void springe() {
+        setySpeed(-50);
+    }
 }

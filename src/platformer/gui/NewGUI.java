@@ -5,7 +5,7 @@
  */
 package platformer.gui;
 
-import platformer.data.Var;
+import platformer.Platformer;
 import platformer.util.ComponentResizer;
 import platformer.util.ComponentMover;
 
@@ -23,7 +23,7 @@ public class NewGUI extends javax.swing.JFrame {
 
         ComponentMover cm = new ComponentMover(this, TitleBar);
         cm.setChangeCursor(false);
-        
+
         ComponentResizer cr = new ComponentResizer();
         cr.registerComponent(this);
         cr.setSnapSize(new java.awt.Dimension(10, 10));
@@ -92,7 +92,7 @@ public class NewGUI extends javax.swing.JFrame {
 
         lblVersion.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         lblVersion.setForeground(new java.awt.Color(204, 204, 204));
-        lblVersion.setText(platformer.core.Platformer.VERSION);
+        lblVersion.setText(platformer.Platformer.VERSION);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -211,7 +211,7 @@ public class NewGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(TitleBar, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addComponent(TitleBar, javax.swing.GroupLayout.DEFAULT_SIZE, 802, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -233,7 +233,7 @@ public class NewGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnSpielstartenActionPerformed
 
     private void jbtnEinstellungenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnEinstellungenActionPerformed
-        
+
     }//GEN-LAST:event_jbtnEinstellungenActionPerformed
 
     private void btnBeendeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBeendeActionPerformed
@@ -249,10 +249,8 @@ public class NewGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_lblStartMouseExited
 
     private void lblStartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStartMouseClicked
-        Var.getJf1().setVisible(true);
         this.setVisible(false);
-        Var.setGameStarted(true);
-        this.dispose();
+        Platformer.startClicked();
     }//GEN-LAST:event_lblStartMouseClicked
 
     private void lblSettingsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSettingsMouseEntered
