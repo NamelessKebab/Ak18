@@ -21,7 +21,7 @@ public class NewGUI extends javax.swing.JFrame {
     public NewGUI() {
         initComponents();
 
-        ComponentMover cm = new ComponentMover(this, TitleBar);
+        ComponentMover cm = new ComponentMover(this, pnTitle);
         cm.setChangeCursor(false);
 
         ComponentResizer cr = new ComponentResizer();
@@ -45,13 +45,13 @@ public class NewGUI extends javax.swing.JFrame {
         jbtnCredits = new javax.swing.JButton();
         jbtnSpielstarten = new javax.swing.JButton();
         btnBeende = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        pnMain = new javax.swing.JPanel();
         lblInfo = new javax.swing.JLabel();
         lblVersion = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        btnBot = new javax.swing.JPanel();
         lblStart = new javax.swing.JLabel();
         lblSettings = new javax.swing.JLabel();
-        TitleBar = new javax.swing.JPanel();
+        pnTitle = new javax.swing.JPanel();
         lblClose = new javax.swing.JLabel();
         lblFramename = new javax.swing.JLabel();
 
@@ -84,7 +84,7 @@ public class NewGUI extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(800, 600));
         setUndecorated(true);
 
-        jPanel3.setBackground(new java.awt.Color(192, 108, 132));
+        pnMain.setBackground(new java.awt.Color(192, 108, 132));
 
         lblInfo.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         lblInfo.setForeground(new java.awt.Color(255, 255, 255));
@@ -94,20 +94,20 @@ public class NewGUI extends javax.swing.JFrame {
         lblVersion.setForeground(new java.awt.Color(204, 204, 204));
         lblVersion.setText(platformer.Platformer.VERSION);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnMainLayout = new javax.swing.GroupLayout(pnMain);
+        pnMain.setLayout(pnMainLayout);
+        pnMainLayout.setHorizontalGroup(
+            pnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnMainLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblVersion))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        pnMainLayout.setVerticalGroup(
+            pnMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnMainLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 398, Short.MAX_VALUE)
@@ -115,7 +115,7 @@ public class NewGUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1.setBackground(new java.awt.Color(53, 92, 125));
+        btnBot.setBackground(new java.awt.Color(53, 92, 125));
 
         lblStart.setBackground(new java.awt.Color(108, 91, 123));
         lblStart.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -148,29 +148,29 @@ public class NewGUI extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnBotLayout = new javax.swing.GroupLayout(btnBot);
+        btnBot.setLayout(btnBotLayout);
+        btnBotLayout.setHorizontalGroup(
+            btnBotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnBotLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblSettings)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 213, Short.MAX_VALUE)
                 .addComponent(lblStart, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(306, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        btnBotLayout.setVerticalGroup(
+            btnBotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnBotLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(btnBotLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblStart, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSettings))
                 .addContainerGap())
         );
 
-        TitleBar.setBackground(new java.awt.Color(248, 177, 149));
-        TitleBar.setPreferredSize(new java.awt.Dimension(0, 30));
+        pnTitle.setBackground(new java.awt.Color(248, 177, 149));
+        pnTitle.setPreferredSize(new java.awt.Dimension(0, 30));
 
         lblClose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rsc/images/Close Window_32px.png"))); // NOI18N
@@ -185,23 +185,23 @@ public class NewGUI extends javax.swing.JFrame {
         lblFramename.setText("Irgendein Name für das Fenster...");
         lblFramename.setFocusable(false);
 
-        javax.swing.GroupLayout TitleBarLayout = new javax.swing.GroupLayout(TitleBar);
-        TitleBar.setLayout(TitleBarLayout);
-        TitleBarLayout.setHorizontalGroup(
-            TitleBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TitleBarLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnTitleLayout = new javax.swing.GroupLayout(pnTitle);
+        pnTitle.setLayout(pnTitleLayout);
+        pnTitleLayout.setHorizontalGroup(
+            pnTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnTitleLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(lblFramename)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblClose))
         );
-        TitleBarLayout.setVerticalGroup(
-            TitleBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TitleBarLayout.createSequentialGroup()
+        pnTitleLayout.setVerticalGroup(
+            pnTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnTitleLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(lblFramename)
                 .addContainerGap())
-            .addGroup(TitleBarLayout.createSequentialGroup()
+            .addGroup(pnTitleLayout.createSequentialGroup()
                 .addComponent(lblClose)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -210,18 +210,18 @@ public class NewGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(TitleBar, javax.swing.GroupLayout.DEFAULT_SIZE, 802, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 802, Short.MAX_VALUE)
+            .addComponent(btnBot, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(TitleBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnBot, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -304,10 +304,8 @@ public class NewGUI extends javax.swing.JFrame {
 //        });
 //    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel TitleBar;
     private javax.swing.JButton btnBeende;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel btnBot;
     private javax.swing.JButton jbtnCredits;
     private javax.swing.JButton jbtnEinstellungen;
     private javax.swing.JButton jbtnInformationen;
@@ -318,5 +316,7 @@ public class NewGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblSettings;
     private javax.swing.JLabel lblStart;
     private javax.swing.JLabel lblVersion;
+    private javax.swing.JPanel pnMain;
+    private javax.swing.JPanel pnTitle;
     // End of variables declaration//GEN-END:variables
 }

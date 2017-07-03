@@ -5,8 +5,10 @@
  */
 package platformer;
 
+import java.util.ArrayList;
 import static platformer.KeyHandler.processKeys;
 import platformer.gui.GameFrame;
+import platformer.objekte.Objekt;
 
 /**
  * GameLoop.java Zweck: Beinhaltet die Loop die über einen Thread gestartet
@@ -39,6 +41,10 @@ public class GameLoop implements Runnable {
      * @param delta Die Zeit zwischen der letzten und dieser Ausführung der Loop
      */
     private void updateGame(double delta) {
+        ArrayList<Objekt> objekte = Platformer.level.getObjekte();
+        for (Objekt objekt : objekte) {
+            objekt.update(delta);
+        }
         Platformer.level.getPlayer().update(delta);
     }
 
@@ -54,6 +60,10 @@ public class GameLoop implements Runnable {
      */
     @Override
     public void run() {
+        // Setzt die Größe des Frames auf die Größe des Levels
+        frame.setPreferredSize(Platformer.level.getSize());
+        frame.pack();
+        
         frame.setVisible(true);
         long lastTime = System.nanoTime();
         // Optimale Laufzeit der Loop in Nanosekunden sodass die Loop targetFPS mal in der Sekunde läuft. (0x3B9ACA00 = 1 Milliarde)

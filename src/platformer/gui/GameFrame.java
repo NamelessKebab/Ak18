@@ -18,6 +18,7 @@ import platformer.objekte.Objekt;
 import platformer.objekte.Player;
 
 /**
+ * GameFrame.java Zweck: Das Frame auf dem das Spiel gezeichnet wird.
  *
  * @author Florian Rost
  */
@@ -26,37 +27,60 @@ public class GameFrame extends JFrame { //Spielfenster
     PaintPanel panel;
     private Level level;
 
+    /**
+     * Der Konstruktor
+     */
     public GameFrame() {
         init();
     }
 
+    /**
+     * Initialisiert das JFrame
+     */
     private void init() {
         setPreferredSize(new Dimension(800, 600));
         setSize(800, 600); // GUI breite und dicke
         setLocationRelativeTo(null);//Objekt wird in die Mitte geschoben
         setVisible(false);
         setLayout(null);
-        setTitle("Jump and Run");
+        setTitle("Platformer");
         setResizable(false);
         requestFocus();
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         panel = new PaintPanel();
         panel.setBounds(0, 0, getWidth(), getHeight());
         add(panel);
-        setPreferredSize(new Dimension(getWidth(),getHeight()));
+        setPreferredSize(new Dimension(getWidth(), getHeight()));
         addKeyListener(new KeyHandler());
     }
 
+    /**
+     * Ruft die repaint() Methode des Panels auf um dieses neu zu zeichnen
+     *
+     * @param level Das zu zeichnende Level
+     */
     public void render(Level level) {
         setLevel(level);
         panel.repaint();
     }
 
+    /**
+     * Erzwingt das zeichnen des Levels ohne dass es erst in die
+     * Swing-Event-Queue gelegt wird
+     *
+     * @param level
+     */
     public void forceRender(Level level) {
         setLevel(level);
         panel.paintComponent(panel.getGraphics());
     }
 
+    /**
+     * Methode die zuständig ist für das Rendern des Frames. Wird von
+     * paintComponent() im Panel aufgerufen.
+     *
+     * @param g
+     */
     private void renderFrame(Graphics2D g) {
         ArrayList<Objekt> objekte = level.getObjekte();
         for (Objekt objekt : objekte) {
@@ -76,7 +100,11 @@ public class GameFrame extends JFrame { //Spielfenster
     private void setLevel(Level level) {
         this.level = level;
     }
-
+    
+    /**
+     * GameFrame.PaintPanel Zweck: Das eigentliche Panel auf welches gezeichnet
+     * wird.
+     */
     protected class PaintPanel extends JPanel {
 
         private boolean antialisingEnabled = false;
@@ -94,9 +122,6 @@ public class GameFrame extends JFrame { //Spielfenster
         }
 
         /**
-         * @param objekte the objekte to set
-         */
-        /**
          * @return the antialisingEnabled
          */
         public boolean isAntialisingEnabled() {
@@ -104,6 +129,8 @@ public class GameFrame extends JFrame { //Spielfenster
         }
 
         /**
+         * Aktiviere oder Deaktiviere Antialising
+         *
          * @param antialisingEnabled the antialisingEnabled to set
          */
         public void setAntialisingEnabled(boolean antialisingEnabled) {

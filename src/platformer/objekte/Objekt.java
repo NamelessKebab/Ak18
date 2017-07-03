@@ -11,13 +11,15 @@ import java.awt.image.BufferedImage;
 import java.io.Serializable;
 
 /**
+ * Objekt.java Zweck: Eine Abstrakte Klasse die die Eigenschaften beinhaltet die
+ * ein Objekt in diesem Spiel haben sollte. Implementiert Serialisierbarkeit
  *
  * @author Julian Blazek
  */
-public abstract class Objekt implements Serializable{
+public abstract class Objekt implements Serializable {
 
     static final long serialVersionUID = 3;
-    
+
     double X = 0;
     double Y = 0;
     int HEIGHT = 0;
