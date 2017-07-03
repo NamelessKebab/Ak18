@@ -5,8 +5,6 @@
  */
 package platformer.gui;
 
-import platformer.data.Var;
-
 /**
  *
  * @author Florian Rost
@@ -31,7 +29,7 @@ public class NewGUISicherheitsabfrage extends javax.swing.JFrame {
 
         jbtnJaVerlassen = new javax.swing.JButton();
         jbtnNeinVerlassen = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblVerlassen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,28 +47,28 @@ public class NewGUISicherheitsabfrage extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Wirklich verlassen?");
+        lblVerlassen.setText("Wirklich verlassen?");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbtnJaVerlassen)
                 .addGap(18, 18, 18)
                 .addComponent(jbtnNeinVerlassen)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabel1)
+                .addComponent(lblVerlassen)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblVerlassen, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtnJaVerlassen)
@@ -84,7 +82,7 @@ public class NewGUISicherheitsabfrage extends javax.swing.JFrame {
     private void jbtnJaVerlassenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnJaVerlassenActionPerformed
         new NewGUI().setVisible(true);
         this.setVisible(false);
-        Var.getJf1().setVisible(false);
+        
     }//GEN-LAST:event_jbtnJaVerlassenActionPerformed
 
     private void jbtnNeinVerlassenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnNeinVerlassenActionPerformed
@@ -117,6 +115,7 @@ public class NewGUISicherheitsabfrage extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(NewGUISicherheitsabfrage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -127,8 +126,8 @@ public class NewGUISicherheitsabfrage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jbtnJaVerlassen;
     private javax.swing.JButton jbtnNeinVerlassen;
+    private javax.swing.JLabel lblVerlassen;
     // End of variables declaration//GEN-END:variables
 }

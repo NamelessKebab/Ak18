@@ -3,23 +3,32 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package platformer.data;
+package platformer.objekte;
 
+import java.awt.Dimension;
+import java.io.Serializable;
 import java.util.ArrayList;
-import platformer.objects.Objekt;
-import platformer.objects.Player;
 
 /**
+ * Level.java Zweck: Definiert den Aufbau eines Level-Objekts. Inhalt: Objekte,
+ * Levelname, Größe, Spieler
  *
  * @author Julian Blazek
  */
-public class Level {
-    private ArrayList<Objekt> objekte = new ArrayList<Objekt>();
+public class Level implements Serializable{
+
+    static final long serialVersionUID = 3;
+    private ArrayList<Objekt> objekte;
+
     private String lvlname;
+    private Dimension size;
 
     private Player player;
-    
-    public Blocks bloecke;
+
+    public Level() {
+        this.player = new Player(0, 0, 0, 0, null);
+        this.objekte = new ArrayList<>();
+    }
 
     public void setObjekte(ArrayList<Objekt> objekte) {
         this.objekte = objekte;
@@ -28,7 +37,7 @@ public class Level {
     public ArrayList<Objekt> getObjekte() {
         return objekte;
     }
-    
+
     public String getLvlname() {
         return lvlname;
     }
@@ -44,21 +53,12 @@ public class Level {
     public Player getPlayer() {
         return player;
     }
-    
-    public class Blocks {
 
-        private ArrayList<Objekt> bloecke;
+    public Dimension getSize() {
+        return size;
+    }
 
-        public Blocks() {
-            bloecke = new ArrayList<>();
-        }
-
-        public void addBlock(Objekt obj) {
-            bloecke.add(obj);
-        }
-
-        public ArrayList<Objekt> getBloecke() {
-            return bloecke;
-        }
+    public void setSize(Dimension size) {
+        this.size = size;
     }
 }
