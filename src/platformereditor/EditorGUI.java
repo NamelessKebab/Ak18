@@ -27,8 +27,14 @@ public class EditorGUI extends javax.swing.JFrame {
     EditorGUI(Editor editor) {
         editorobj = editor;
         initComponents();
+
         btngRcklMenu.add(rbmitAdd);
         btngRcklMenu.add(rbmitDel);
+
+        btngRcklMenuType.add(rbmitSpieler);
+        btngRcklMenuType.add(rbmitBlock);
+        btngRcklMenuType.add(rbmitZiel);
+
         setLocationRelativeTo(null);
     }
 
@@ -44,7 +50,12 @@ public class EditorGUI extends javax.swing.JFrame {
         rcklMenu = new javax.swing.JPopupMenu();
         rbmitAdd = new javax.swing.JRadioButtonMenuItem();
         rbmitDel = new javax.swing.JRadioButtonMenuItem();
+        sep2 = new javax.swing.JPopupMenu.Separator();
+        rbmitSpieler = new javax.swing.JRadioButtonMenuItem();
+        rbmitBlock = new javax.swing.JRadioButtonMenuItem();
+        rbmitZiel = new javax.swing.JRadioButtonMenuItem();
         btngRcklMenu = new javax.swing.ButtonGroup();
+        btngRcklMenuType = new javax.swing.ButtonGroup();
         pnEditor = new EditorPanel();
         mbMenu = new javax.swing.JMenuBar();
         miDatei = new javax.swing.JMenu();
@@ -65,6 +76,37 @@ public class EditorGUI extends javax.swing.JFrame {
         rbmitDel.setSelected(true);
         rbmitDel.setText("Entfernen");
         rcklMenu.add(rbmitDel);
+        rcklMenu.add(sep2);
+
+        rbmitSpieler.setSelected(true);
+        rbmitSpieler.setText("Spieler");
+        rbmitSpieler.setActionCommand("Spielerbtn");
+        rbmitSpieler.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbmitTypeActionPerformed(evt);
+            }
+        });
+        rcklMenu.add(rbmitSpieler);
+
+        rbmitBlock.setSelected(true);
+        rbmitBlock.setText("Block");
+        rbmitBlock.setActionCommand("Blockbtn");
+        rbmitBlock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbmitTypeActionPerformed(evt);
+            }
+        });
+        rcklMenu.add(rbmitBlock);
+
+        rbmitZiel.setSelected(true);
+        rbmitZiel.setText("Ziel");
+        rbmitZiel.setActionCommand("Zielbtn");
+        rbmitZiel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbmitTypeActionPerformed(evt);
+            }
+        });
+        rcklMenu.add(rbmitZiel);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -167,7 +209,6 @@ public class EditorGUI extends javax.swing.JFrame {
 
     public void reRender() {
         pnEditor.repaint();
-        System.out.println("" + pnEditor.getSize().height + "," + pnEditor.getSize().width);
     }
     private void reRenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reRenderActionPerformed
         reRender();
@@ -189,22 +230,40 @@ public class EditorGUI extends javax.swing.JFrame {
         editorobj.newClicked();
     }//GEN-LAST:event_mitNeuActionPerformed
 
+    private void rbmitTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmitTypeActionPerformed
+        editorobj.updateProps();
+    }//GEN-LAST:event_rbmitTypeActionPerformed
+
     public void showRightClickMenu(MouseEvent evt) {
         rcklMenu.show(this, evt.getX(), evt.getY());
     }
-    
-    public int getRightClickMenuStatus(){
-        if(rbmitAdd.isSelected()){
-            return 1;
+
+    public int getRightClickMenuTypeStatus() {
+        if (rbmitSpieler.isSelected()) {
+            return 1; // Spieler
         }
-        if(rbmitDel.isSelected()){
-            return 2;
+        if (rbmitBlock.isSelected()) {
+            return 2; // Block
+        }
+        if (rbmitZiel.isSelected()) {
+            return 3; // Ziel
         }
         return 0;
     }
-    
+
+    public int getRightClickMenuStatus() {
+        if (rbmitAdd.isSelected()) {
+            return 1; // Hinzufügen
+        }
+        if (rbmitDel.isSelected()) {
+            return 2; // Entfernen
+        }
+        return 0;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btngRcklMenu;
+    private javax.swing.ButtonGroup btngRcklMenuType;
     private javax.swing.JMenuBar mbMenu;
     private javax.swing.JMenu miDatei;
     private javax.swing.JMenu miExtra;
@@ -216,10 +275,14 @@ public class EditorGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem mitSave;
     private javax.swing.JPanel pnEditor;
     private javax.swing.JRadioButtonMenuItem rbmitAdd;
+    private javax.swing.JRadioButtonMenuItem rbmitBlock;
     private javax.swing.JRadioButtonMenuItem rbmitDel;
+    private javax.swing.JRadioButtonMenuItem rbmitSpieler;
+    private javax.swing.JRadioButtonMenuItem rbmitZiel;
     private javax.swing.JPopupMenu rcklMenu;
     private javax.swing.JMenuItem reRender;
     private javax.swing.JPopupMenu.Separator sep1;
+    private javax.swing.JPopupMenu.Separator sep2;
     // End of variables declaration//GEN-END:variables
 
     class EditorPanel extends JPanel {

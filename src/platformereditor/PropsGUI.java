@@ -22,6 +22,7 @@ public class PropsGUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
     boolean error = false;
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,13 +39,15 @@ public class PropsGUI extends javax.swing.JFrame {
         txtHeight = new javax.swing.JTextField();
         lblColor = new javax.swing.JLabel();
         btnColor = new javax.swing.JButton();
+        lblSolid = new javax.swing.JLabel();
+        cbSolide = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Eigenschaften");
         setType(java.awt.Window.Type.UTILITY);
         java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
         layout.columnWidths = new int[] {0, 20, 0, 20, 0};
-        layout.rowHeights = new int[] {0, 1, 0, 1, 0};
+        layout.rowHeights = new int[] {0, 1, 0, 1, 0, 1, 0};
         getContentPane().setLayout(layout);
 
         lblWidth.setText("Breite");
@@ -105,57 +108,90 @@ public class PropsGUI extends javax.swing.JFrame {
         gridBagConstraints.ipady = 12;
         getContentPane().add(btnColor, gridBagConstraints);
 
+        lblSolid.setText("Solide");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        getContentPane().add(lblSolid, gridBagConstraints);
+
+        cbSolide.setText("Solide");
+        cbSolide.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbSolideActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 6;
+        getContentPane().add(cbSolide, gridBagConstraints);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColorActionPerformed
         Color color = JColorChooser.showDialog(this, "Farbe wählen..", btnColor.getBackground());
-        if(color!=null){
+        if (color != null) {
             btnColor.setBackground(color);
-        } 
+        }
     }//GEN-LAST:event_btnColorActionPerformed
 
     private void txtWidthFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtWidthFocusLost
-        if(isNumber(txtWidth.getText())){
+        if (isNumber(txtWidth.getText())) {
             txtWidth.setBackground(Color.white);
             error = false;
-        }else{
+        } else {
             txtWidth.setBackground(Color.red);
             error = true;
         }
     }//GEN-LAST:event_txtWidthFocusLost
 
     private void txtHeightFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHeightFocusLost
-        if(isNumber(txtHeight.getText())){
+        if (isNumber(txtHeight.getText())) {
             txtHeight.setBackground(Color.white);
             error = false;
-        }else{
+        } else {
             txtHeight.setBackground(Color.red);
             error = true;
         }
     }//GEN-LAST:event_txtHeightFocusLost
-    
-    public int getWidthProp(){
+
+    private void cbSolideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSolideActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbSolideActionPerformed
+
+    public int getWidthProp() {
         return Integer.valueOf(txtWidth.getText());
     }
-    
-    public int getHeightProp(){
+
+    public int getHeightProp() {
         return Integer.valueOf(txtHeight.getText());
     }
-         
-    public Color getColor(){
+
+    public Color getColor() {
         return btnColor.getBackground();
     }
-    public static boolean isNumber(String string){
+
+    public static boolean isNumber(String string) {
         return string.matches("\\d+");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnColor;
+    private javax.swing.JCheckBox cbSolide;
     private javax.swing.JLabel lblColor;
     private javax.swing.JLabel lblHeight;
+    private javax.swing.JLabel lblSolid;
     private javax.swing.JLabel lblWidth;
     private javax.swing.JTextField txtHeight;
     private javax.swing.JTextField txtWidth;
     // End of variables declaration//GEN-END:variables
+
+    public void setSolidEnabled(boolean b) {
+        cbSolide.setEnabled(b);
+        lblSolid.setEnabled(b);
+    }
+
+    Boolean getSolid() {
+        return cbSolide.isSelected();
+    }
 }

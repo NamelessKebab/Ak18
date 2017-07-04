@@ -19,9 +19,9 @@ import platformer.objekte.Objekt;
 public class GameLoop implements Runnable {
 
     GameFrame frame;
-    boolean running = true;
+    private boolean running = true;
     private final int targetFPS;
-    boolean debug = true;
+    private boolean debug = true;
 
     /**
      * Der Konstruktor dieser Klasse welcher sowohl die zu erzielenden FPS
@@ -70,7 +70,7 @@ public class GameLoop implements Runnable {
         final long optimalTime = 0x3B9ACA00 / targetFPS;
         int n = 0;
         // Eigentliche Loop
-        while (running) {
+        while (isRunning()) {
             long nowTime = System.nanoTime();
             long loopLength = nowTime - lastTime;
             double delta = loopLength / (double) 33333332;
@@ -79,9 +79,10 @@ public class GameLoop implements Runnable {
 
             // Die eigentlichen Aktionen in der Loop
             KeyHandler.processKeys();
+            
             updateGame(delta);
             render();
-
+            
             // Berechnung der Optimalen Zeit die der Thread dann schläft. Die 0xF4240 (1'000'000) dienen zur Konvertierung der ns in ms.
             long sleepTime = (lastTime - System.nanoTime() + optimalTime) / 0xF4240;
             try {
@@ -91,12 +92,40 @@ public class GameLoop implements Runnable {
             }
 
             // Nur zum Debuggen...
-            if (n == 60 && debug == true) {
+            if (n == 60 && isDebug() == true) {
                 System.out.println("" + accuracy + ";" + delta + ";" + optimalTime + ";" + lastTime + ";" + Platformer.level.getPlayer().getySpeed());
                 n = 0;
             }
             n++;
         }
+    }
+
+    /**
+     * @return the running
+     */
+    public boolean isRunning() {
+        return running;
+    }
+
+    /**
+     * @param running the running to set
+     */
+    public void setRunning(boolean running) {
+        this.running = running;
+    }
+
+    /**
+     * @return the debug
+     */
+    public boolean isDebug() {
+        return debug;
+    }
+
+    /**
+     * @param debug the debug to set
+     */
+    public void setDebug(boolean debug) {
+        this.debug = debug;
     }
 
 }
