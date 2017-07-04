@@ -18,20 +18,24 @@ public class Bloecke extends Objekt {
 
     int h = 5;
 
-    public Bloecke(int p_x, int p_y, int p_width, int p_height, Color p_color) {
+    public Bloecke(int p_x, int p_y, int p_width, int p_height, boolean solid, boolean hurts, Color p_color) {
         X = p_x;
         Y = p_y;
         WIDTH = p_width;
         HEIGHT = p_height;
         COLOR = p_color;
+        isSolid = solid;
+        isHurt = hurts;
     }
 
-    public Bloecke(int p_x, int p_y, int p_width, int p_height, BufferedImage p_sprite) {
+    public Bloecke(int p_x, int p_y, int p_width, int p_height, boolean solid, boolean hurts, BufferedImage p_sprite) {
         X = p_x;
         Y = p_y;
         WIDTH = p_width;
         HEIGHT = p_height;
         SPRITE = p_sprite;
+        isSolid = solid;
+        isHurt = hurts;
     }
-    
+
 }

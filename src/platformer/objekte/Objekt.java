@@ -26,6 +26,8 @@ public abstract class Objekt implements Serializable {
     int WIDTH = 0;
     BufferedImage SPRITE = null;
     Color COLOR = Color.DARK_GRAY;
+    boolean isSolid = false;
+    boolean isHurt = false;
 
     public Color getCOLOR() {
         return COLOR;
@@ -59,4 +61,6 @@ public abstract class Objekt implements Serializable {
     public void update(double deltaTime) {
     }
 
+    public void collide(Objekt partner) {
+    }
 }

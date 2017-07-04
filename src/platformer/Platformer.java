@@ -8,10 +8,10 @@ package platformer;
 import platformer.objekte.Level;
 import java.io.File;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import platformer.gui.NewGUI;
-import platformereditor.Editor;
 
 /**
  * Platformer.java Zweck: Diese Klasse ist die Start und Hauptklasse des
@@ -22,10 +22,23 @@ import platformereditor.Editor;
 public class Platformer {
 
     final private static int TARGETFPS = 60; // Empfohlen: 60 FPS. Unter 30 kann es zu Berechnungsfehlern in der Physik kommen.
-    final public static String VERSION = "v0.1.0.0-alpha";
+    final public static String VERSION = "v0.1.0.7-alpha";
     private static Thread gameThread;
     private static NewGUI menu;
     public static Level level = new Level();
+    private static GameLoop gameLoop;
+
+    // Methode die aufgerufen wird falls der Spieler gewonnen hat.
+    public static void won() {
+        gameLoop.setRunning(false);
+        JOptionPane.showMessageDialog(null, "Du hast gewonnen!!");
+        gameLoop.frame.dispose();
+        gameLoop = null;
+        KeyHandler.KEYS_PRESSED.clear();
+        gameThread = null;
+        System.gc();
+        menu.show();
+    }
 
     public Platformer() {
         init();
@@ -37,6 +50,7 @@ public class Platformer {
     private static void init() {
         menu = new platformer.gui.NewGUI();
         menu.setVisible(true);
+
     }
 
     /**
@@ -44,6 +58,8 @@ public class Platformer {
      * "Start" klickt.
      */
     public static void startClicked() {
+
+        gameLoop = new GameLoop(TARGETFPS);
 
         /**
          * Das Auswahlmenü für Level in Form eines JFileChoosers wird erstellt
@@ -59,7 +75,7 @@ public class Platformer {
         if (option == JFileChooser.APPROVE_OPTION) {
 
             // Erstellt einen Thread der GameLoop Klasse.
-            gameThread = new Thread(new GameLoop(TARGETFPS));
+            gameThread = new Thread(gameLoop);
 
             // Liest die ausgewählte Datei mithilfe des LevelParsers.
             File leveldatei = chooser.getSelectedFile();

@@ -16,15 +16,17 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.util.ArrayList;
+import javax.swing.ButtonModel;
 import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import platformer.LevelParser;
+import platformer.objekte.Ziel;
 
 /**
  *
- * @author leonb
+ * @author Flo & Julian
  */
 public class Editor {
 
@@ -81,6 +83,7 @@ public class Editor {
         init();
         Properties = new PropsGUI();
         Properties.setVisible(true);
+        updateProps();
     }
 
     private static void setLaF() {
@@ -122,8 +125,8 @@ public class Editor {
             }
             if (GUI.getRightClickMenuStatus() == 1) {
                 System.out.println("hä?");
-                Bloecke block = addblock(evt);
-                objects.add(block);
+                Objekt obj = addObjekt(evt);
+                if(obj != null){objects.add(obj);}
             }
             currentLevel.setObjekte(objects);
             GUI.reRender();
@@ -136,11 +139,11 @@ public class Editor {
 
     public void openProps() {
         Properties.dispose();
-        Properties = new PropsGUI();
+        Properties.pack();
         Properties.setVisible(true);
     }
 
-    private Bloecke addblock(MouseEvent evt) {
+    private Objekt addObjekt(MouseEvent evt) {
         if (Properties.error) {
             return null;
         }
@@ -149,8 +152,24 @@ public class Editor {
         int width = Properties.getWidthProp();
         int height = Properties.getHeightProp();
         Color color = Properties.getColor();
-        Bloecke block = new Bloecke(x, y, width, height, color);
-        return block;
+        Boolean solid = Properties.getSolid();
+        Objekt obj = null;
+        int type = GUI.getRightClickMenuTypeStatus();
+        switch(type){
+            case 1:
+                currentLevel.setPlayer(new Player(x, y, width, height, null));
+                break;
+            case 2:
+                obj = new Bloecke(x, y, width, height, solid, false, color);
+                break;
+            case 3:
+                obj = new Ziel(x, y, width, height, color);
+                break;
+            default:
+                break;
+        }
+        
+        return obj;
     }
 
     void test() {
@@ -182,5 +201,14 @@ public class Editor {
         currentLevel.setLvlname("Neues Level");
         GUI.setPanelSize(currentLevel.getSize());
         GUI.reRender();
+    }
+
+    void updateProps() {
+        int status = GUI.getRightClickMenuTypeStatus();
+        if(status == 1 || status == 3){
+            Properties.setSolidEnabled(false);
+        } else {
+            Properties.setSolidEnabled(true);
+        }
     }
     }

@@ -40,6 +40,7 @@ public class Player extends Objekt {
         this.WIDTH = width;
         this.HEIGHT = height;
         this.SPRITE = sprite;
+        
     }
 
     public double getxSpeed() {
@@ -92,9 +93,12 @@ public class Player extends Objekt {
         setY(y);
         for (Objekt objekt : platformer.Platformer.level.getObjekte()) {
             if (kollisionsAbfrage(this, objekt)) {
-                setySpeed(0);
-                setY(alty);
+                objekt.collide(this);
+                if (objekt.isSolid) {
+                    setySpeed(0);
+                    setY(alty);
 
+                }
             }
         }
     }

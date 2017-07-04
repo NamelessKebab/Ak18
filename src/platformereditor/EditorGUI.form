@@ -20,9 +20,43 @@
             <Property name="text" type="java.lang.String" value="Entfernen"/>
           </Properties>
         </MenuItem>
+        <Component class="javax.swing.JPopupMenu$Separator" name="sep2">
+        </Component>
+        <MenuItem class="javax.swing.JRadioButtonMenuItem" name="rbmitSpieler">
+          <Properties>
+            <Property name="selected" type="boolean" value="true"/>
+            <Property name="text" type="java.lang.String" value="Spieler"/>
+            <Property name="actionCommand" type="java.lang.String" value="Spielerbtn"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbmitTypeActionPerformed"/>
+          </Events>
+        </MenuItem>
+        <MenuItem class="javax.swing.JRadioButtonMenuItem" name="rbmitBlock">
+          <Properties>
+            <Property name="selected" type="boolean" value="true"/>
+            <Property name="text" type="java.lang.String" value="Block"/>
+            <Property name="actionCommand" type="java.lang.String" value="Blockbtn"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbmitTypeActionPerformed"/>
+          </Events>
+        </MenuItem>
+        <MenuItem class="javax.swing.JRadioButtonMenuItem" name="rbmitZiel">
+          <Properties>
+            <Property name="selected" type="boolean" value="true"/>
+            <Property name="text" type="java.lang.String" value="Ziel"/>
+            <Property name="actionCommand" type="java.lang.String" value="Zielbtn"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbmitTypeActionPerformed"/>
+          </Events>
+        </MenuItem>
       </SubComponents>
     </Container>
     <Component class="javax.swing.ButtonGroup" name="btngRcklMenu">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="btngRcklMenuType">
     </Component>
     <Menu class="javax.swing.JMenuBar" name="mbMenu">
       <Properties>
