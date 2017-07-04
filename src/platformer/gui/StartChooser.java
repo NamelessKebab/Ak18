@@ -73,6 +73,10 @@ public class StartChooser extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Startet entweder den Editor oder das Spiel
+     * @param evt 
+     */
     private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
        if(rbEditor.isSelected()){
            new platformereditor.Editor();

@@ -40,7 +40,7 @@ public class Player extends Objekt {
         this.WIDTH = width;
         this.HEIGHT = height;
         this.SPRITE = sprite;
-        
+
     }
 
     public double getxSpeed() {
@@ -80,7 +80,9 @@ public class Player extends Objekt {
     }
 
     /**
-     * Führt die Physikberechnung des Spielers durch.
+     * Führt die Physikberechnung des Spielers durch. Lässt einen Spieler auch
+     * nur dann "kollidieren" falls das Objekt mit dem es Kollidiert "Solid"
+     * ist.
      *
      * @param deltaTime
      */

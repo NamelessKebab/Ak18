@@ -17,12 +17,12 @@ import platformer.gui.NewGUI;
  * Platformer.java Zweck: Diese Klasse ist die Start und Hauptklasse des
  * Platformers
  *
- * @author Julian Blazek
+ * @author Florian Rost & Julian Blazek
  */
 public class Platformer {
 
     final private static int TARGETFPS = 60; // Empfohlen: 60 FPS. Unter 30 kann es zu Berechnungsfehlern in der Physik kommen.
-    final public static String VERSION = "v0.1.0.7-alpha";
+    final public static String VERSION = "v0.0.9.0-alpha";
     private static Thread gameThread;
     private static NewGUI menu;
     public static Level level = new Level();

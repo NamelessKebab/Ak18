@@ -6,7 +6,6 @@
 package platformer;
 
 import java.util.ArrayList;
-import static platformer.KeyHandler.processKeys;
 import platformer.gui.GameFrame;
 import platformer.objekte.Objekt;
 

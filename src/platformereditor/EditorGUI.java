@@ -13,8 +13,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
 /**
- *
- * @author leonb
+ * Editor.java Zweck: Die GUI des Editors
+ * @author Flo & Julian
  */
 public class EditorGUI extends javax.swing.JFrame {
 

@@ -25,7 +25,7 @@ import platformer.LevelParser;
 import platformer.objekte.Ziel;
 
 /**
- *
+ * Editor.java Zweck: Die Steuerungsklasse des Editors
  * @author Flo & Julian
  */
 public class Editor {

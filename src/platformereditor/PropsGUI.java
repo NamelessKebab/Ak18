@@ -9,8 +9,8 @@ import java.awt.Color;
 import javax.swing.JColorChooser;
 
 /**
- *
- * @author leonb
+ * PropsGUI.java Zweck: Die GUI des Eigenschafteneditors
+ * @author Florian Rost
  */
 public class PropsGUI extends javax.swing.JFrame {
 

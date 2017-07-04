@@ -11,7 +11,7 @@ import platformer.gui.NewGUIPause;
  * KeyActions.java Zweck: Beinhaltet Methoden die bei dem Druck von Tasten
  * ausgeführt werden sollen.
  *
- * @author Julian Blazek
+ * @author Julian Blazek & Florian Rost
  */
 public class KeyActions {
 

@@ -5,8 +5,6 @@
  */
 package platformer.gui;
 
-import javax.swing.JFrame;
-
 /**
  *
  * @author Florian Rost
