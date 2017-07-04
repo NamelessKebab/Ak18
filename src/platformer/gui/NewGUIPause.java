@@ -16,6 +16,7 @@ public class NewGUIPause extends javax.swing.JFrame {
      */
     public NewGUIPause() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

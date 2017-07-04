@@ -16,6 +16,7 @@ public class NewGUISicherheitsabfrage extends javax.swing.JFrame {
      */
     public NewGUISicherheitsabfrage() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

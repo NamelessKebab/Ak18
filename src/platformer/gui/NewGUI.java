@@ -28,6 +28,7 @@ public class NewGUI extends javax.swing.JFrame {
         cr.registerComponent(this);
         cr.setSnapSize(new java.awt.Dimension(10, 10));
         cr.setMinimumSize(new java.awt.Dimension(800, 600));
+      
 
     }
 
