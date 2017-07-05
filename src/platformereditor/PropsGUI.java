@@ -6,22 +6,32 @@
 package platformereditor;
 
 import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JColorChooser;
 
 /**
  * PropsGUI.java Zweck: Die GUI des Eigenschafteneditors
+ *
  * @author Florian Rost
  */
 public class PropsGUI extends javax.swing.JFrame {
 
     /**
-     * Creates new form PropsGUI
+     * Erstellt das Level-Eigenschaften Fenster
      */
-    public PropsGUI() {
+    public PropsGUI(Editor editor) {
         initComponents();
+        this.editorobj = editor;
         setLocationRelativeTo(null);
     }
+    private Editor editorobj;
     boolean error = false;
+    private BufferedImage sprite = null;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,27 +49,45 @@ public class PropsGUI extends javax.swing.JFrame {
         txtHeight = new javax.swing.JTextField();
         lblColor = new javax.swing.JLabel();
         btnColor = new javax.swing.JButton();
-        lblSolid = new javax.swing.JLabel();
-        cbSolide = new javax.swing.JCheckBox();
+        cbSolid = new javax.swing.JCheckBox();
+        lblSprite = new javax.swing.JLabel();
+        btnSprite = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        btnSpriteDel = new javax.swing.JButton();
+        btnSpriteShow = new javax.swing.JButton();
+        cbUseXY = new javax.swing.JCheckBox();
+        txtX = new javax.swing.JTextField();
+        txtY = new javax.swing.JTextField();
+        lblX = new javax.swing.JLabel();
+        lblY = new javax.swing.JLabel();
+        sep1 = new javax.swing.JSeparator();
+        sep2 = new javax.swing.JSeparator();
+        sep3 = new javax.swing.JSeparator();
+        btnUpdate = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Eigenschaften");
+        setResizable(false);
         setType(java.awt.Window.Type.UTILITY);
         java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
-        layout.columnWidths = new int[] {0, 20, 0, 20, 0};
-        layout.rowHeights = new int[] {0, 1, 0, 1, 0, 1, 0};
+        layout.columnWidths = new int[] {0, 20, 0};
+        layout.rowHeights = new int[] {0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0};
         getContentPane().setLayout(layout);
 
         lblWidth.setText("Breite");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 4, 0, 0);
         getContentPane().add(lblWidth, gridBagConstraints);
 
         lblHeight.setText("Höhe");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 4, 0, 0);
         getContentPane().add(lblHeight, gridBagConstraints);
 
         txtWidth.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
@@ -71,8 +99,9 @@ public class PropsGUI extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 10;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 4);
         getContentPane().add(txtWidth, gridBagConstraints);
 
         txtHeight.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
@@ -84,14 +113,17 @@ public class PropsGUI extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 12;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 4);
         getContentPane().add(txtHeight, gridBagConstraints);
 
         lblColor.setText("Farbe");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 16;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 4, 0, 0);
         getContentPane().add(lblColor, gridBagConstraints);
 
         btnColor.setBackground(new java.awt.Color(0, 0, 0));
@@ -102,32 +134,177 @@ public class PropsGUI extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 16;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 25;
         gridBagConstraints.ipady = 12;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 4);
         getContentPane().add(btnColor, gridBagConstraints);
 
-        lblSolid.setText("Solide");
+        cbSolid.setText("Massiv");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 18;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 4);
+        getContentPane().add(cbSolid, gridBagConstraints);
+
+        lblSprite.setText("Sprite");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        getContentPane().add(lblSolid, gridBagConstraints);
+        gridBagConstraints.gridy = 22;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 4, 0, 0);
+        getContentPane().add(lblSprite, gridBagConstraints);
 
-        cbSolide.setText("Solide");
-        cbSolide.addActionListener(new java.awt.event.ActionListener() {
+        btnSprite.setText("Setze Sprite");
+        btnSprite.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbSolideActionPerformed(evt);
+                btnSpriteActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 22;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 4);
+        getContentPane().add(btnSprite, gridBagConstraints);
+
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        btnSpriteDel.setText("Reset");
+        btnSpriteDel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSpriteDelActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel1.add(btnSpriteDel, gridBagConstraints);
+
+        btnSpriteShow.setText("Zeige");
+        btnSpriteShow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSpriteShowActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel1.add(btnSpriteShow, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 24;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 4, 4);
+        getContentPane().add(jPanel1, gridBagConstraints);
+
+        cbUseXY.setText("X/Y benutzen");
+        cbUseXY.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbUseXYActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 4);
+        getContentPane().add(cbUseXY, gridBagConstraints);
+
+        txtX.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        txtX.setText("0");
+        txtX.setEnabled(false);
+        txtX.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtXFocusLost(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 4);
+        getContentPane().add(txtX, gridBagConstraints);
+
+        txtY.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        txtY.setText("0");
+        txtY.setEnabled(false);
+        txtY.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtYFocusLost(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
-        getContentPane().add(cbSolide, gridBagConstraints);
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 4);
+        getContentPane().add(txtY, gridBagConstraints);
+
+        lblX.setText("X");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 4, 0, 0);
+        getContentPane().add(lblX, gridBagConstraints);
+
+        lblY.setText("Y");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 4, 0, 0);
+        getContentPane().add(lblY, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 4, 0, 4);
+        getContentPane().add(sep1, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 4, 0, 4);
+        getContentPane().add(sep2, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 20;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 4, 0, 4);
+        getContentPane().add(sep3, gridBagConstraints);
+
+        btnUpdate.setText("Setze Eigenschaften");
+        btnUpdate.setEnabled(false);
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(4, 0, 0, 4);
+        getContentPane().add(btnUpdate, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Erstellt einen JColorChooser und lässt den Benutzer eine Farbe wählen
+     *
+     * @param evt
+     */
     private void btnColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColorActionPerformed
         Color color = JColorChooser.showDialog(this, "Farbe wählen..", btnColor.getBackground());
         if (color != null) {
@@ -135,6 +312,11 @@ public class PropsGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnColorActionPerformed
 
+    /**
+     * Prüft ob Text in TextField eine Nummer ist. Wenn nicht dann true -> error
+     *
+     * @param evt
+     */
     private void txtWidthFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtWidthFocusLost
         if (isNumber(txtWidth.getText())) {
             txtWidth.setBackground(Color.white);
@@ -155,9 +337,84 @@ public class PropsGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtHeightFocusLost
 
-    private void cbSolideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSolideActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbSolideActionPerformed
+    /**
+     * Lässt den Benutzer ein Sprite auswählen und zeigt das Sprite in einem
+     * neuen SpriteViewer
+     *
+     * @param evt
+     */
+    private void btnSpriteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSpriteActionPerformed
+        File imgfile = Editor.openSprite();
+        try {
+            sprite = ImageIO.read(imgfile);
+        } catch (IOException ex) {
+            Logger.getLogger(PropsGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        btnSprite.setText(imgfile.getName());
+        new SpriteViewer(getSprite()).setVisible(true);
+    }//GEN-LAST:event_btnSpriteActionPerformed
+
+    /**
+     * Löscht wieder das Sprite
+     *
+     * @param evt
+     */
+    private void btnSpriteDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSpriteDelActionPerformed
+        sprite = null;
+        btnSprite.setText("Setze Sprite");
+    }//GEN-LAST:event_btnSpriteDelActionPerformed
+
+    /**
+     * Zeigt das Sprite in einem SpriteViewer
+     *
+     * @param evt
+     */
+    private void btnSpriteShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSpriteShowActionPerformed
+        if (getSprite() != null) {
+            new SpriteViewer(getSprite()).setVisible(true);
+        }
+    }//GEN-LAST:event_btnSpriteShowActionPerformed
+
+    /**
+     * Prüft ob Text in TextField eine Nummer ist. Wenn nicht dann true -> error
+     *
+     * @param evt
+     */
+    private void txtXFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtXFocusLost
+        if (isNumber(txtX.getText())) {
+            txtX.setBackground(Color.white);
+            error = false;
+        } else {
+            txtX.setBackground(Color.red);
+            error = true;
+        }
+    }//GEN-LAST:event_txtXFocusLost
+
+    private void txtYFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtYFocusLost
+        if (isNumber(txtY.getText())) {
+            txtY.setBackground(Color.white);
+            error = false;
+        } else {
+            txtY.setBackground(Color.red);
+            error = true;
+        }
+    }//GEN-LAST:event_txtYFocusLost
+
+    private void cbUseXYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbUseXYActionPerformed
+        setXYEnabled(getXYEnabled());
+    }//GEN-LAST:event_cbUseXYActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        editorobj.updateBlockPerformed();
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    public int getXProp() {
+        return Integer.valueOf(txtX.getText());
+    }
+
+    public int getYProp() {
+        return Integer.valueOf(txtY.getText());
+    }
 
     public int getWidthProp() {
         return Integer.valueOf(txtWidth.getText());
@@ -171,27 +428,66 @@ public class PropsGUI extends javax.swing.JFrame {
         return btnColor.getBackground();
     }
 
+    /**
+     * Prüft mit einem Regulären Ausdruck ob der String eine Zahl ist.
+     *
+     * @param string
+     * @return ist Zahl?
+     */
     public static boolean isNumber(String string) {
-        return string.matches("\\d+");
+        return string.matches("^(\\+|-)?\\d+");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnColor;
-    private javax.swing.JCheckBox cbSolide;
+    private javax.swing.JButton btnSprite;
+    private javax.swing.JButton btnSpriteDel;
+    private javax.swing.JButton btnSpriteShow;
+    private javax.swing.JButton btnUpdate;
+    private javax.swing.JCheckBox cbSolid;
+    private javax.swing.JCheckBox cbUseXY;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblColor;
     private javax.swing.JLabel lblHeight;
-    private javax.swing.JLabel lblSolid;
+    private javax.swing.JLabel lblSprite;
     private javax.swing.JLabel lblWidth;
+    private javax.swing.JLabel lblX;
+    private javax.swing.JLabel lblY;
+    private javax.swing.JSeparator sep1;
+    private javax.swing.JSeparator sep2;
+    private javax.swing.JSeparator sep3;
     private javax.swing.JTextField txtHeight;
     private javax.swing.JTextField txtWidth;
+    private javax.swing.JTextField txtX;
+    private javax.swing.JTextField txtY;
     // End of variables declaration//GEN-END:variables
 
     public void setSolidEnabled(boolean b) {
-        cbSolide.setEnabled(b);
-        lblSolid.setEnabled(b);
+        cbSolid.setEnabled(b);
     }
 
-    Boolean getSolid() {
-        return cbSolide.isSelected();
+    public void setXYEnabled(boolean b) {
+        cbUseXY.setSelected(b);
+        txtX.setEnabled(b);
+        txtY.setEnabled(b);
+    }
+
+    public Boolean getSolid() {
+        return cbSolid.isSelected();
+    }
+
+    public Boolean getXYEnabled() {
+        return cbUseXY.isSelected();
+    }
+
+    public void setUpdateEnabled(Boolean b) {
+        btnUpdate.setEnabled(b);
+    }
+
+    /**
+     * @return the sprite
+     */
+    public BufferedImage getSprite() {
+        return sprite;
     }
 }

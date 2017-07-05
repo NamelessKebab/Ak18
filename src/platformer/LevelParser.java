@@ -27,11 +27,15 @@ public class LevelParser {
     private Level lvlobject;
     private File leveldat;
 
+    /**
+     * Liest ein Level aus einer binären Datei.
+     *
+     * @return gelesenes Level
+     */
     public Level readLevel() {
         FileInputStream stream = null;
         try {
             lvlobject = new Level();
-            Object load = null;
             stream = new FileInputStream(leveldat);
             ObjectInputStream objinput = new ObjectInputStream(stream);
             lvlobject = (Level) objinput.readObject();
@@ -49,6 +53,11 @@ public class LevelParser {
         return lvlobject;
     }
 
+    /**
+     * Schreibt ein vorhandenes Level in eine Datei
+     *
+     * @param level Das zu schreibende Level.
+     */
     public void writeLevel(Level level) {
 
         try {
@@ -67,6 +76,12 @@ public class LevelParser {
 
     }
 
+    /**
+     * Konstruiert ein LevelParser Objekt was mit der übergebenen "File"
+     * arbeitet.
+     *
+     * @param leveldatei Datei(pfad) zur Datei
+     */
     public LevelParser(File leveldatei) {
         leveldat = leveldatei;
         lvlobject = new Level();

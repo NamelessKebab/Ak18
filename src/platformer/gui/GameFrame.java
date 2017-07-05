@@ -38,24 +38,23 @@ public class GameFrame extends JFrame { //Spielfenster
      * Initialisiert das JFrame
      */
     private void init() {
-        setPreferredSize(new Dimension(800, 600));
-        setSize(800, 600); // GUI breite und dicke
         setLocationRelativeTo(null);//Objekt wird in die Mitte geschoben
         setVisible(false);
-        setLayout(null);
+        getContentPane().setLayout(new java.awt.GridLayout());
         setTitle("Platformer");
         setResizable(false);
         requestFocus();
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         panel = new PaintPanel();
         panel.setBounds(0, 0, getWidth(), getHeight());
-        add(panel);
-        setPreferredSize(new Dimension(getWidth(), getHeight()));
+        getContentPane().add(panel);
         addKeyListener(new KeyHandler());
+        pack();
     }
 
     /**
-     * Ruft die repaint() Methode des Panels auf um dieses neu zu zeichnen
+     * Ruft die repaint() Methode des Panels auf um dieses neu zu zeichnen. Das
+     * zu zeichnende findet sich in GameFrame.PaintPanel.paintComponent().
      *
      * @param level Das zu zeichnende Level
      */
@@ -68,7 +67,7 @@ public class GameFrame extends JFrame { //Spielfenster
      * Erzwingt das zeichnen des Levels ohne dass es erst in die
      * Swing-Event-Queue gelegt wird
      *
-     * @param level
+     * @param level Das zu zeichnende Level
      */
     public void forceRender(Level level) {
         setLevel(level);
@@ -90,17 +89,31 @@ public class GameFrame extends JFrame { //Spielfenster
             } else {
                 g.drawImage(objekt.getSPRITE(), objekt.getX(), objekt.getY(), objekt.getWIDTH(), objekt.getHEIGHT(), null);
             }
-
         }
         Player player = level.getPlayer();
-        g.setColor(player.getCOLOR());
-        g.fillRect(player.getX(), player.getY(), player.getHEIGHT(), player.getWIDTH());
+        if (player.getSPRITE() != null) {
+            g.drawImage(player.getSPRITE(), player.getX(), player.getY(), player.getWIDTH(), player.getHEIGHT(), this);
+        } else {
+            g.setColor(player.getCOLOR());
+            g.fillRect(player.getX(), player.getY(), player.getHEIGHT(), player.getWIDTH());
+        }
     }
 
     private void setLevel(Level level) {
         this.level = level;
     }
-    
+
+    /**
+     * Setzt das PaintPanel auf die erwünschte Größe.
+     *
+     * @param size Die erwünschte Größe des PaintPanels
+     */
+    public void setPanelSize(Dimension size) {
+        panel.setPreferredSize(size);
+        this.pack();
+        setLocationRelativeTo(null);
+    }
+
     /**
      * GameFrame.PaintPanel Zweck: Das eigentliche Panel auf welches gezeichnet
      * wird.

@@ -6,6 +6,8 @@
 package platformer.gui;
 
 /**
+ * NewGUI.Sicherheitsabfrage.java Zweck: Frägt den Nutzer nochmal ob er denn
+ * auch wirklich ins Hauptmenü zurückkehren will.
  *
  * @author Florian Rost
  */
@@ -31,7 +33,7 @@ public class NewGUISicherheitsabfrage extends javax.swing.JFrame {
         jbtnNeinVerlassen = new javax.swing.JButton();
         lblVerlassen = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jbtnJaVerlassen.setText("Ja");
         jbtnJaVerlassen.addActionListener(new java.awt.event.ActionListener() {
@@ -80,9 +82,8 @@ public class NewGUISicherheitsabfrage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnJaVerlassenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnJaVerlassenActionPerformed
-        new NewGUI().setVisible(true);
-        this.setVisible(false);
-        
+        platformer.Platformer.backToMenu();
+        this.dispose();
     }//GEN-LAST:event_jbtnJaVerlassenActionPerformed
 
     private void jbtnNeinVerlassenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnNeinVerlassenActionPerformed

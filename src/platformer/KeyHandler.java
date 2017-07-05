@@ -40,6 +40,7 @@ public class KeyHandler implements KeyListener {
                     KeyActions.d_pressed();
                 }
                 if (c == KeyEvent.VK_P) {
+                    KEYS_PRESSED.remove(KeyEvent.VK_P);
                     KeyActions.p_pressed();
                 }
             }
