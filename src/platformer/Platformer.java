@@ -22,7 +22,7 @@ import platformer.gui.NewGUI;
 public class Platformer {
 
     final private static int TARGETFPS = 60; // Empfohlen: 60 FPS. Unter 30 kann es zu Berechnungsfehlern in der Physik kommen.
-    final public static String VERSION = "v0.0.9.0-alpha";
+    final public static String VERSION = "v0.1.1.0-alpha";
     private static Thread gameThread;
     private static NewGUI menu;
     public static Level level = new Level();
@@ -32,12 +32,17 @@ public class Platformer {
     public static void won() {
         gameLoop.setRunning(false);
         JOptionPane.showMessageDialog(null, "Du hast gewonnen!!");
+        backToMenu();
+    }
+
+    public static void backToMenu() {
         gameLoop.frame.dispose();
         gameLoop = null;
         KeyHandler.KEYS_PRESSED.clear();
         gameThread = null;
+        level = new Level();
         System.gc();
-        menu.show();
+        menu.setVisible(true);
     }
 
     public Platformer() {
@@ -50,7 +55,16 @@ public class Platformer {
     private static void init() {
         menu = new platformer.gui.NewGUI();
         menu.setVisible(true);
+    }
 
+    /**
+     * Falls das Programm direkt über diese Klasse gestartet wird so erzeugt
+     * diese ein Objekt ebendieser.
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        new Platformer();
     }
 
     /**

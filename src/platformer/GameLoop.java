@@ -6,6 +6,7 @@
 package platformer;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 import platformer.gui.GameFrame;
 import platformer.objekte.Objekt;
 
@@ -20,7 +21,8 @@ public class GameLoop implements Runnable {
     GameFrame frame;
     private boolean running = true;
     private final int targetFPS;
-    private boolean debug = true;
+    private boolean debug = false;
+    private static final Logger LOG = Logger.getLogger(GameLoop.class.getName());
 
     /**
      * Der Konstruktor dieser Klasse welcher sowohl die zu erzielenden FPS
@@ -60,10 +62,9 @@ public class GameLoop implements Runnable {
     @Override
     public void run() {
         // Setzt die Größe des Frames auf die Größe des Levels
-        frame.setPreferredSize(Platformer.level.getSize());
-        frame.pack();
-        
         frame.setVisible(true);
+        frame.setPanelSize(Platformer.level.getSize());
+
         long lastTime = System.nanoTime();
         // Optimale Laufzeit der Loop in Nanosekunden sodass die Loop targetFPS mal in der Sekunde läuft. (0x3B9ACA00 = 1 Milliarde)
         final long optimalTime = 0x3B9ACA00 / targetFPS;
@@ -72,20 +73,24 @@ public class GameLoop implements Runnable {
         while (isRunning()) {
             long nowTime = System.nanoTime();
             long loopLength = nowTime - lastTime;
-            double delta = loopLength / (double) 33333332;
+            double delta = loopLength / (double) 33333332; // DeltaZeit als Faktor für die Berechnung der Physik und anderem.
             lastTime = nowTime;
-            double accuracy = loopLength / ((double) optimalTime); //Prüfwert.. Umso näher an 1 umso besser war die Loop in der Zeit.
+            double accuracy = loopLength / ((double) optimalTime); // Prüfwert.. Umso näher an 1 umso besser war die Loop in der Zeit.
 
             // Die eigentlichen Aktionen in der Loop
             KeyHandler.processKeys();
-            
             updateGame(delta);
             render();
-            
+
             // Berechnung der Optimalen Zeit die der Thread dann schläft. Die 0xF4240 (1'000'000) dienen zur Konvertierung der ns in ms.
             long sleepTime = (lastTime - System.nanoTime() + optimalTime) / 0xF4240;
             try {
-                Thread.sleep(sleepTime);
+                try {
+                    Thread.sleep(sleepTime);
+                } catch (IllegalArgumentException ex) {
+                    System.out.println("Fehler im LoopThread.. Aber nicht schlimm.. (:");
+                    ex.printStackTrace();
+                }
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }

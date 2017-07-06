@@ -6,13 +6,16 @@
 package platformer.gui;
 
 /**
+ * StartChooser.java Zweck: Lässt den Benutzer auswählen ob dieser den Editor
+ * oder das Spiel starten will.
  *
- * @author Julian Blazek
+ * @author Florian Rost
  */
 public class StartChooser extends javax.swing.JFrame {
 
     /**
-     * Creates new form StartChoose
+     * Creates new form StartChooser. Fügt zudem die radioButtons einer
+     * Buttongroup zu und schiebt das Fenster in die Mitte.
      */
     public StartChooser() {
         initComponents();
@@ -40,7 +43,7 @@ public class StartChooser extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Platformer");
         setResizable(false);
-        setType(java.awt.Window.Type.UTILITY);
+        setType(java.awt.Window.Type.POPUP);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         rbGame.setSelected(true);
@@ -49,6 +52,7 @@ public class StartChooser extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 0, 4);
         getContentPane().add(rbGame, gridBagConstraints);
 
         rbEditor.setText("Editor");
@@ -56,6 +60,7 @@ public class StartChooser extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 4, 0, 4);
         getContentPane().add(rbEditor, gridBagConstraints);
 
         Start.setText("Starten");
@@ -68,6 +73,7 @@ public class StartChooser extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 4, 4, 4);
         getContentPane().add(Start, gridBagConstraints);
 
         pack();
@@ -75,15 +81,16 @@ public class StartChooser extends javax.swing.JFrame {
 
     /**
      * Startet entweder den Editor oder das Spiel
-     * @param evt 
+     *
+     * @param evt
      */
     private void StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartActionPerformed
-       if(rbEditor.isSelected()){
-           new platformereditor.Editor();
-       } else {
-           new platformer.Platformer();
-       }
-       this.dispose();
+        if (rbEditor.isSelected()) {
+            new platformereditor.Editor();
+        } else {
+            new platformer.Platformer();
+        }
+        this.dispose();
     }//GEN-LAST:event_StartActionPerformed
 
     /**

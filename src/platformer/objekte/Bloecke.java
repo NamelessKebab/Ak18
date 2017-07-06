@@ -7,6 +7,7 @@ package platformer.objekte;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
+import javax.swing.ImageIcon;
 
 /**
  * Bloecke.java Zweck: Eine Klasse die Objekt.java erweitert und alle Blöcke
@@ -33,7 +34,7 @@ public class Bloecke extends Objekt {
         Y = p_y;
         WIDTH = p_width;
         HEIGHT = p_height;
-        SPRITE = p_sprite;
+        SPRITE = new ImageIcon(p_sprite);
         isSolid = solid;
         isHurt = hurts;
     }

@@ -13,12 +13,27 @@
             <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="Hinzuf&#xfc;gen"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbmitActionPerformed"/>
+          </Events>
+        </MenuItem>
+        <MenuItem class="javax.swing.JRadioButtonMenuItem" name="rbmitSelect">
+          <Properties>
+            <Property name="selected" type="boolean" value="true"/>
+            <Property name="text" type="java.lang.String" value="Ausw&#xe4;hlen"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbmitActionPerformed"/>
+          </Events>
         </MenuItem>
         <MenuItem class="javax.swing.JRadioButtonMenuItem" name="rbmitDel">
           <Properties>
             <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="Entfernen"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbmitActionPerformed"/>
+          </Events>
         </MenuItem>
         <Component class="javax.swing.JPopupMenu$Separator" name="sep2">
         </Component>
@@ -125,10 +140,18 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mitOpenProps">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Eigenschaften"/>
+                <Property name="text" type="java.lang.String" value="Objekt Eigenschaften"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mitOpenPropsActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="mitOpenLevelProps">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Level Eigenschaften"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mitOpenLevelPropsActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -150,6 +173,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Editor"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>

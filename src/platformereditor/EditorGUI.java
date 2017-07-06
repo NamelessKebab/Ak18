@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 
 /**
  * Editor.java Zweck: Die GUI des Editors
+ *
  * @author Flo & Julian
  */
 public class EditorGUI extends javax.swing.JFrame {
@@ -22,7 +23,9 @@ public class EditorGUI extends javax.swing.JFrame {
     Editor editorobj;
 
     /**
-     * Creates new form NewJFrame
+     * Erstellt die EditorGUI und fügt die RadioButtons in dem "Rechtsklickmenü"
+     * jeweils zu einer ButtonGroup hinzu. Zudem Schiebt er das Fenster in die
+     * Mitte.
      */
     EditorGUI(Editor editor) {
         editorobj = editor;
@@ -30,6 +33,7 @@ public class EditorGUI extends javax.swing.JFrame {
 
         btngRcklMenu.add(rbmitAdd);
         btngRcklMenu.add(rbmitDel);
+        btngRcklMenu.add(rbmitSelect);
 
         btngRcklMenuType.add(rbmitSpieler);
         btngRcklMenuType.add(rbmitBlock);
@@ -49,6 +53,7 @@ public class EditorGUI extends javax.swing.JFrame {
 
         rcklMenu = new javax.swing.JPopupMenu();
         rbmitAdd = new javax.swing.JRadioButtonMenuItem();
+        rbmitSelect = new javax.swing.JRadioButtonMenuItem();
         rbmitDel = new javax.swing.JRadioButtonMenuItem();
         sep2 = new javax.swing.JPopupMenu.Separator();
         rbmitSpieler = new javax.swing.JRadioButtonMenuItem();
@@ -66,15 +71,35 @@ public class EditorGUI extends javax.swing.JFrame {
         reRender = new javax.swing.JMenuItem();
         miWindows = new javax.swing.JMenu();
         mitOpenProps = new javax.swing.JMenuItem();
+        mitOpenLevelProps = new javax.swing.JMenuItem();
         miExtra = new javax.swing.JMenu();
         mitInfo = new javax.swing.JMenuItem();
 
         rbmitAdd.setSelected(true);
         rbmitAdd.setText("Hinzufügen");
+        rbmitAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbmitActionPerformed(evt);
+            }
+        });
         rcklMenu.add(rbmitAdd);
+
+        rbmitSelect.setSelected(true);
+        rbmitSelect.setText("Auswählen");
+        rbmitSelect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbmitActionPerformed(evt);
+            }
+        });
+        rcklMenu.add(rbmitSelect);
 
         rbmitDel.setSelected(true);
         rbmitDel.setText("Entfernen");
+        rbmitDel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbmitActionPerformed(evt);
+            }
+        });
         rcklMenu.add(rbmitDel);
         rcklMenu.add(sep2);
 
@@ -109,6 +134,7 @@ public class EditorGUI extends javax.swing.JFrame {
         rcklMenu.add(rbmitZiel);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Editor");
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
@@ -176,13 +202,21 @@ public class EditorGUI extends javax.swing.JFrame {
 
         miWindows.setText("Fenster");
 
-        mitOpenProps.setText("Eigenschaften");
+        mitOpenProps.setText("Objekt Eigenschaften");
         mitOpenProps.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mitOpenPropsActionPerformed(evt);
             }
         });
         miWindows.add(mitOpenProps);
+
+        mitOpenLevelProps.setText("Level Eigenschaften");
+        mitOpenLevelProps.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitOpenLevelPropsActionPerformed(evt);
+            }
+        });
+        miWindows.add(mitOpenLevelProps);
 
         mbMenu.add(miWindows);
 
@@ -202,11 +236,19 @@ public class EditorGUI extends javax.swing.JFrame {
         editorobj.openClicked();
     }//GEN-LAST:event_mitOeffneActionPerformed
 
+    /**
+     * Setzt die Panelgröße und passt das Frame auf die größe an.
+     *
+     * @param size
+     */
     public void setPanelSize(Dimension size) {
         pnEditor.setPreferredSize(size);
         this.pack();
     }
 
+    /**
+     * Zeichnet das Frame neu
+     */
     public void reRender() {
         pnEditor.repaint();
     }
@@ -234,10 +276,27 @@ public class EditorGUI extends javax.swing.JFrame {
         editorobj.updateProps();
     }//GEN-LAST:event_rbmitTypeActionPerformed
 
+    private void rbmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbmitActionPerformed
+        editorobj.checkAuswaehl();
+    }//GEN-LAST:event_rbmitActionPerformed
+
+    private void mitOpenLevelPropsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitOpenLevelPropsActionPerformed
+        editorobj.openLevelProps();
+    }//GEN-LAST:event_mitOpenLevelPropsActionPerformed
+
+    /**
+     * Zeigt das Rechtklickmenü an der entsprechenden Stelle.
+     *
+     * @param evt
+     */
     public void showRightClickMenu(MouseEvent evt) {
         rcklMenu.show(this, evt.getX(), evt.getY());
     }
 
+    /**
+     * Gibt die Blocktyp Auswahl des "Rechtsklickmenüs" zurück
+     * @return Blocktyp
+     */
     public int getRightClickMenuTypeStatus() {
         if (rbmitSpieler.isSelected()) {
             return 1; // Spieler
@@ -251,12 +310,19 @@ public class EditorGUI extends javax.swing.JFrame {
         return 0;
     }
 
+    /**
+     * Gibt die Aktion Auswahl des "Rechtsklickmenüs" zurück
+     * @return Aktion
+     */
     public int getRightClickMenuStatus() {
         if (rbmitAdd.isSelected()) {
             return 1; // Hinzufügen
         }
+        if (rbmitSelect.isSelected()) {
+            return 2; // Auswählen
+        }
         if (rbmitDel.isSelected()) {
-            return 2; // Entfernen
+            return 3; // Entfernen
         }
         return 0;
     }
@@ -271,12 +337,14 @@ public class EditorGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem mitInfo;
     private javax.swing.JMenuItem mitNeu;
     private javax.swing.JMenuItem mitOeffne;
+    private javax.swing.JMenuItem mitOpenLevelProps;
     private javax.swing.JMenuItem mitOpenProps;
     private javax.swing.JMenuItem mitSave;
     private javax.swing.JPanel pnEditor;
     private javax.swing.JRadioButtonMenuItem rbmitAdd;
     private javax.swing.JRadioButtonMenuItem rbmitBlock;
     private javax.swing.JRadioButtonMenuItem rbmitDel;
+    private javax.swing.JRadioButtonMenuItem rbmitSelect;
     private javax.swing.JRadioButtonMenuItem rbmitSpieler;
     private javax.swing.JRadioButtonMenuItem rbmitZiel;
     private javax.swing.JPopupMenu rcklMenu;
@@ -285,6 +353,9 @@ public class EditorGUI extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator sep2;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Auf diesem Panel wird gezeichnet.
+     */
     class EditorPanel extends JPanel {
 
         @Override

@@ -7,6 +7,7 @@ package platformer.objekte;
 
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import javax.swing.ImageIcon;
 
 /**
  * Diese Klasse dient dazu Variablen und Eigenschaften des Spielers zu
@@ -17,13 +18,14 @@ import java.awt.image.BufferedImage;
  */
 public class Player extends Objekt {
 
-    static final long serialVersionUID = 3;
+    static final long serialVersionUID = 4;
 
     private double xSpeed = 0;
     private double ySpeed = 0;
     private int altX;
     private int altY;
-    private double gravity = 5;
+    private double gravity = 6;
+    private int sprungStaerke = -35;
 
     /**
      * Der Konstruktor dieser Klasse welcher sofort einige Werte speichert.
@@ -39,7 +41,11 @@ public class Player extends Objekt {
         this.Y = y;
         this.WIDTH = width;
         this.HEIGHT = height;
-        this.SPRITE = sprite;
+        try {
+            this.SPRITE = new ImageIcon(sprite);
+        } catch (NullPointerException ex) {
+            this.SPRITE = null;
+        }
 
     }
 
@@ -57,14 +63,6 @@ public class Player extends Objekt {
 
     public int getAltY() {
         return altY;
-    }
-
-    public void setX(int x) {
-        this.X = x;
-    }
-
-    public void setY(int y) {
-        this.Y = y;
     }
 
     public void setySpeed(double ySpeed) {
@@ -90,13 +88,13 @@ public class Player extends Objekt {
     public void update(double deltaTime) {
         int alty, y;
         alty = getY();
-        ySpeed = getySpeed() + gravity * deltaTime;
+        ySpeed = getySpeed() + getGravity() * deltaTime;
         y = (int) (getY() + getySpeed() * deltaTime);
         setY(y);
         for (Objekt objekt : platformer.Platformer.level.getObjekte()) {
             if (kollisionsAbfrage(this, objekt)) {
                 objekt.collide(this);
-                if (objekt.isSolid) {
+                if (objekt.isSolid) { // Prüft ob Objekt solid ist.
                     setySpeed(0);
                     setY(alty);
 
@@ -125,7 +123,39 @@ public class Player extends Objekt {
         return collision;
     }
 
+    /**
+     * Lässt den Player "springen" ( verändert die y-Geschwindigkeit des
+     * Spielers )
+     */
     public void springe() {
-        setySpeed(-50);
+        setySpeed(getSprungStaerke());
+    }
+
+    /**
+     * @return the gravity
+     */
+    public double getGravity() {
+        return gravity;
+    }
+
+    /**
+     * @param gravity the gravity to set
+     */
+    public void setGravity(double gravity) {
+        this.gravity = gravity;
+    }
+
+    /**
+     * @return the sprungStaerke
+     */
+    public int getSprungStaerke() {
+        return sprungStaerke;
+    }
+
+    /**
+     * @param sprungStaerke the sprungStaerke to set
+     */
+    public void setSprungStaerke(int sprungStaerke) {
+        this.sprungStaerke = sprungStaerke;
     }
 }
