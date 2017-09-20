@@ -7,11 +7,17 @@ package platformer;
 
 import platformer.objekte.Level;
 import java.io.File;
+import java.io.IOException;
+import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import platformer.api.interf.Pluggable;
+import platformer.plug.util.PluginLoader;
+import platformer.api.interf.PluginManager;
 import platformer.gui.NewGUI;
+import platformer.plug.manager.PluginManagerImpl;
 
 /**
  * Platformer.java Zweck: Diese Klasse ist die Start und Hauptklasse des
@@ -21,8 +27,9 @@ import platformer.gui.NewGUI;
  */
 public class Platformer {
 
+    final private static String PLUGINDIR = "./plugins";
     final private static int TARGETFPS = 60; // Empfohlen: 60 FPS. Unter 30 kann es zu Berechnungsfehlern in der Physik kommen.
-    final public static String VERSION = "v0.1.1.0-alpha";
+    final public static String VERSION = "v0.2.0.0-alpha";
     private static Thread gameThread;
     private static NewGUI menu;
     public static Level level = new Level();
@@ -33,6 +40,19 @@ public class Platformer {
         gameLoop.setRunning(false);
         JOptionPane.showMessageDialog(null, "Du hast gewonnen!!");
         backToMenu();
+    }
+
+    private static void loadPlugins(String dir) throws IOException {
+        new File(dir).mkdir();
+        List<Pluggable> plugins = PluginLoader.loadPlugins(new File(dir));
+        PluginManager manager = new PluginManagerImpl();
+        for (Pluggable p : plugins) {
+            p.setPluginManager(manager);
+        }
+        for (Pluggable p : plugins) {
+            p.start();
+        }
+
     }
 
     public static void backToMenu() {
@@ -46,6 +66,11 @@ public class Platformer {
     }
 
     public Platformer() {
+        try {
+            loadPlugins(PLUGINDIR);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
         init();
     }
 

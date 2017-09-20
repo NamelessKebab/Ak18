@@ -5,6 +5,14 @@
  */
 package platformer.gui;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import platformer.api.interf.Pluggable;
+import platformer.api.interf.PluginManager;
+import platformer.plug.manager.PluginManagerImpl;
+import platformer.plug.util.PluginLoader;
+
 /**
  * StartChooser.java Zweck: Lässt den Benutzer auswählen ob dieser den Editor
  * oder das Spiel starten will.
@@ -13,11 +21,17 @@ package platformer.gui;
  */
 public class StartChooser extends javax.swing.JFrame {
 
+    
+
+    
+    
+    
     /**
      * Creates new form StartChooser. Fügt zudem die radioButtons einer
      * Buttongroup zu und schiebt das Fenster in die Mitte.
      */
     public StartChooser() {
+        
         initComponents();
         bg1.add(rbEditor);
         bg1.add(rbGame);
